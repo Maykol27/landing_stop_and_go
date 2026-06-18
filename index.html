@@ -152,9 +152,7 @@
               <div style="display: flex; flex-direction: column; align-items: flex-end;">
                 <span style="background: rgba(57,255,20,0.1); border: 1px solid var(--primary); color: var(--primary); font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px;">VIABILIDAD ALTA 96%</span>
               </div>
-            </div>
-
-            <!-- Geomap Interactive Window -->
+                     <!-- Geomap Interactive Window -->
             <div class="geomap-container" id="geomapContainer" style="position: relative; height: 340px; background: #070709; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; user-select: none;">
               
               <!-- Map Canvas (Zoomable wrapper) -->
@@ -163,15 +161,34 @@
                 <!-- Background Grid Texture -->
                 <div style="position: absolute; inset: 0; background: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px) 0 0 / 20px 20px; opacity: 0.8; pointer-events: none;"></div>
                 
+                <!-- Cardinal Axes / Crosshairs (Technical GIS lines) -->
+                <div class="map-crosshair-h" style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(57,255,20,0.06); pointer-events: none; transform: translateY(-50%); transition: opacity 0.3s ease;"></div>
+                <div class="map-crosshair-v" style="position: absolute; top: 0; bottom: 0; left: 45%; width: 1px; background: rgba(57,255,20,0.06); pointer-events: none; transform: translateX(-50%); transition: opacity 0.3s ease;"></div>
+
+                <!-- Active Conic-Gradient Radar Scan Sweep -->
+                <div class="radar-sweep" id="radarSweep" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 360px; height: 360px; border-radius: 50%; background: conic-gradient(from 0deg, transparent 40%, rgba(57,255,20,0.06) 100%); pointer-events: none; mix-blend-mode: screen; transform-origin: center; transition: opacity 0.3s ease; z-index: 2;"></div>
+
                 <!-- Concentric Range Buffers (Influence rings) -->
-                <div class="map-range-rings" id="mapRangeRings" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 120px; height: 120px; border: 1px dashed rgba(57,255,20,0.2); border-radius: 50%; pointer-events: none; transition: opacity 0.3s ease;">
-                  <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: rgba(57,255,20,0.5); font-weight: 700; letter-spacing: 0.5px;">150m</span>
+                <div class="map-range-rings" id="mapRangeRings1" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 120px; height: 120px; border: 1px dashed rgba(57,255,20,0.25); border-radius: 50%; pointer-events: none; transition: opacity 0.3s ease; background: radial-gradient(circle, rgba(57,255,20,0.02) 60%, rgba(57,255,20,0.05) 100%);">
+                  <span class="range-badge" style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 0.52rem; color: rgba(57,255,20,0.85); font-weight: 800; letter-spacing: 0.8px; white-space: nowrap; font-family: monospace; background: rgba(0,0,0,0.8); padding: 1px 5px; border-radius: 3px; border: 1px solid rgba(57,255,20,0.15);">R-150m (Foco Directo)</span>
+                  <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 6px; background: rgba(57,255,20,0.4); transform: translateX(-50%);"></div>
+                  <div style="position: absolute; bottom: 0; left: 50%; width: 1px; height: 6px; background: rgba(57,255,20,0.4); transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 0; top: 50%; width: 6px; height: 1px; background: rgba(57,255,20,0.4); transform: translateY(-50%);"></div>
+                  <div style="position: absolute; right: 0; top: 50%; width: 6px; height: 1px; background: rgba(57,255,20,0.4); transform: translateY(-50%);"></div>
                 </div>
-                <div class="map-range-rings" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 240px; height: 240px; border: 1px dashed rgba(255,255,255,0.08); border-radius: 50%; pointer-events: none; transition: opacity 0.3s ease;">
-                  <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: rgba(255,255,255,0.3); font-weight: 700; letter-spacing: 0.5px;">300m</span>
+                <div class="map-range-rings" id="mapRangeRings2" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 240px; height: 240px; border: 1px dashed rgba(255,255,255,0.08); border-radius: 50%; pointer-events: none; transition: opacity 0.3s ease; background: radial-gradient(circle, rgba(255,255,255,0.003) 60%, rgba(255,255,255,0.012) 100%);">
+                  <span class="range-badge" style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 0.52rem; color: rgba(255,255,255,0.5); font-weight: 800; letter-spacing: 0.8px; white-space: nowrap; font-family: monospace; background: rgba(0,0,0,0.8); padding: 1px 5px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.05);">R-300m (Influencia)</span>
+                  <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 6px; background: rgba(255,255,255,0.2); transform: translateX(-50%);"></div>
+                  <div style="position: absolute; bottom: 0; left: 50%; width: 1px; height: 6px; background: rgba(255,255,255,0.2); transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 0; top: 50%; width: 6px; height: 1px; background: rgba(255,255,255,0.2); transform: translateY(-50%);"></div>
+                  <div style="position: absolute; right: 0; top: 50%; width: 6px; height: 1px; background: rgba(255,255,255,0.2); transform: translateY(-50%);"></div>
                 </div>
-                <div class="map-range-rings" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 360px; height: 360px; border: 1px dashed rgba(255,255,255,0.05); border-radius: 50%; pointer-events: none; transition: opacity 0.3s ease;">
-                  <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: rgba(255,255,255,0.2); font-weight: 700; letter-spacing: 0.5px;">500m</span>
+                <div class="map-range-rings" id="mapRangeRings3" style="position: absolute; top: 50%; left: 45%; transform: translate(-50%, -50%); width: 360px; height: 360px; border: 1px dashed rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none; transition: opacity 0.3s ease; background: radial-gradient(circle, rgba(255,255,255,0.001) 70%, rgba(255,255,255,0.008) 100%);">
+                  <span class="range-badge" style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 0.52rem; color: rgba(255,255,255,0.3); font-weight: 800; letter-spacing: 0.8px; white-space: nowrap; font-family: monospace; background: rgba(0,0,0,0.8); padding: 1px 5px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.03);">R-500m (Atracción)</span>
+                  <div style="position: absolute; top: 0; left: 50%; width: 1px; height: 6px; background: rgba(255,255,255,0.1); transform: translateX(-50%);"></div>
+                  <div style="position: absolute; bottom: 0; left: 50%; width: 1px; height: 6px; background: rgba(255,255,255,0.1); transform: translateX(-50%);"></div>
+                  <div style="position: absolute; left: 0; top: 50%; width: 6px; height: 1px; background: rgba(255,255,255,0.1); transform: translateY(-50%);"></div>
+                  <div style="position: absolute; right: 0; top: 50%; width: 6px; height: 1px; background: rgba(255,255,255,0.1); transform: translateY(-50%);"></div>
                 </div>
 
                 <!-- Streets & Roads -->
@@ -224,16 +241,62 @@
                   <div class="traffic-particle horizontal-w-3" style="top: 55%;"></div>
                 </div>
 
-                <!-- Pedestrian Walkways Overlay Layer -->
+                <!-- Pedestrian Walkways Overlay Layer with Glowing Particles -->
                 <div class="map-pedestrian-layer" id="mapPedestrianLayer" style="position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s ease;">
                   <svg width="100%" height="100%" style="position: absolute; inset: 0;">
-                    <!-- Path from TM Paloquemao to STOP & GO -->
-                    <path d="M 200 170 Q 210 180 225 180" fill="none" stroke="#22d5c4" stroke-width="2" stroke-dasharray="4,4" class="ped-path-anim" />
-                    <!-- Path from Plaza Paloquemao to STOP & GO -->
-                    <path d="M 340 75 Q 260 75 225 180" fill="none" stroke="#22d5c4" stroke-width="2" stroke-dasharray="4,4" class="ped-path-anim" />
-                    <!-- Path from Hospital Mederi to STOP & GO -->
-                    <path d="M 80 265 Q 150 265 225 180" fill="none" stroke="#22d5c4" stroke-width="2" stroke-dasharray="4,4" class="ped-path-anim" />
+                    <defs>
+                      <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2.5" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                    </defs>
+                    
+                    <!-- Paths representing walking traffic -->
+                    <!-- TM Paloquemao to STOP & GO (Main Flow) -->
+                    <path id="path-tm" d="M 200 170 Q 210 180 225 180" fill="none" stroke="#22d5c4" stroke-width="2.5" stroke-dasharray="4,4" class="ped-path-anim" style="filter: url(#glow-cyan); opacity: 0.85;" />
+                    
+                    <!-- Plaza Paloquemao to STOP & GO -->
+                    <path id="path-plaza" d="M 340 75 Q 260 75 225 180" fill="none" stroke="#22d5c4" stroke-width="2" stroke-dasharray="4,4" class="ped-path-anim" style="filter: url(#glow-cyan); opacity: 0.7;" />
+                    
+                    <!-- Hospital Mederi to STOP & GO -->
+                    <path id="path-mederi" d="M 80 265 Q 150 265 225 180" fill="none" stroke="#22d5c4" stroke-width="2" stroke-dasharray="4,4" class="ped-path-anim" style="filter: url(#glow-cyan); opacity: 0.7;" />
+                    
+                    <!-- Text markers along paths -->
+                    <text font-size="7" fill="#22d5c4" font-weight="800" dy="-4" style="font-family: monospace; letter-spacing: 0.5px;"><textPath href="#path-tm" startOffset="30%">3,800 p/h (TM)</textPath></text>
+                    <text font-size="6.5" fill="#22d5c4" font-weight="700" dy="-4" style="font-family: monospace; letter-spacing: 0.5px;"><textPath href="#path-plaza" startOffset="25%">1,200 p/h (Plaza)</textPath></text>
+                    <text font-size="6.5" fill="#22d5c4" font-weight="700" dy="-4" style="font-family: monospace; letter-spacing: 0.5px;"><textPath href="#path-mederi" startOffset="30%">850 p/h (Hosp)</textPath></text>
+
+                    <!-- Glowing Circle Particles Animated Along Paths via animateMotion -->
+                    <circle r="4" fill="#22d5c4" style="filter: url(#glow-cyan);">
+                      <animateMotion dur="2.8s" repeatCount="indefinite" path="M 200 170 Q 210 180 225 180" />
+                    </circle>
+                    <circle r="3" fill="#22d5c4" style="filter: url(#glow-cyan);">
+                      <animateMotion dur="4.2s" repeatCount="indefinite" path="M 340 75 Q 260 75 225 180" />
+                    </circle>
+                    <circle r="3" fill="#22d5c4" style="filter: url(#glow-cyan);" begin="2.1s">
+                      <animateMotion dur="4.2s" repeatCount="indefinite" path="M 340 75 Q 260 75 225 180" />
+                    </circle>
+                    <circle r="3" fill="#22d5c4" style="filter: url(#glow-cyan);">
+                      <animateMotion dur="5.5s" repeatCount="indefinite" path="M 80 265 Q 150 265 225 180" />
+                    </circle>
+                    <circle r="3" fill="#22d5c4" style="filter: url(#glow-cyan);" begin="2.7s">
+                      <animateMotion dur="5.5s" repeatCount="indefinite" path="M 80 265 Q 150 265 225 180" />
+                    </circle>
                   </svg>
+                  
+                  <!-- Pedestrian Origin Floating Badges (Visible when active) -->
+                  <div class="ped-origin-badge" style="position: absolute; top: 46%; left: 33%; transform: translate(-50%, -50%);">
+                    <span class="ped-origin-dot"></span>
+                    <span class="ped-origin-text">TM Paloquemao</span>
+                  </div>
+                  <div class="ped-origin-badge" style="position: absolute; top: 21%; left: 78%; transform: translate(-50%, -50%);">
+                    <span class="ped-origin-dot"></span>
+                    <span class="ped-origin-text">Plaza Paloquemao</span>
+                  </div>
+                  <div class="ped-origin-badge" style="position: absolute; top: 78%; left: 8%; transform: translate(-50%, -50%);">
+                    <span class="ped-origin-dot"></span>
+                    <span class="ped-origin-text">Hosp. Méderi</span>
+                  </div>
                 </div>
 
                 <!-- LANDMARK NODES (Clickable Markers) -->
@@ -312,135 +375,197 @@
               </div>
             </div>
 
-            <!-- Landmark Dynamically Updated Panel -->
-            <div id="landmarkDetailPanel" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 18px; min-height: 120px; transition: all 0.3s ease;">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
-                <h5 id="nodeInfoTitle" style="color: #fff; font-size: 0.95rem; font-weight: 800; margin: 0; text-transform: uppercase;">Punto de Servicio STOP & GO</h5>
-                <span id="nodeInfoDist" style="font-size: 0.65rem; background: rgba(57,255,20,0.15); color: var(--primary); font-weight: 700; padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(57,255,20,0.2);">Estación Central</span>
+            <!-- Landmark Dynamically Updated Panel (Balanced 2-Column Corporate Report) -->
+            <div id="landmarkDetailPanel" class="sikai-dashboard-grid" style="background: rgba(12,12,15,0.95); border: 1px solid rgba(57,255,20,0.15); border-radius: 20px; padding: 22px; min-height: 260px; transition: all 0.3s ease; display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
+              
+              <!-- Left Column: Point Technical Specification File -->
+              <div style="display: flex; flex-direction: column; gap: 12px; border-right: 1px solid rgba(255,255,255,0.06); padding-right: 20px;" class="sikai-dashboard-col-left">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px;">
+                  <h5 id="nodeInfoTitle" style="color: #fff; font-size: 1.05rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--heading);">Punto de Servicio STOP & GO</h5>
+                  <span id="nodeInfoDist" style="font-size: 0.65rem; background: rgba(57,255,20,0.15); color: var(--primary); font-weight: 800; padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(57,255,20,0.2); text-transform: uppercase; white-space: nowrap;">Estación Central</span>
+                </div>
+                
+                <p id="nodeInfoDesc" style="font-size: 0.82rem; color: rgba(255,255,255,0.85); margin: 0; line-height: 1.5;">Ubicado en la intersección de la Calle 19 con Carrera 30, este lote aprovecha una de las arterias más conectadas del centro de Bogotá. Es un punto de confluencia vial masiva.</p>
+                
+                <!-- Dynamic Opportunity Section -->
+                <div>
+                  <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.8px; display: block; margin-bottom: 4px;">Análisis de Oportunidad Comercial</span>
+                  <p id="nodeInfoOpportunity" style="font-size: 0.78rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.45;">Intersección vial de máxima afluencia. El flujo diario de 42,100 vehículos asegura compras rápidas y permanencia. Ideal para un hub multi-servicios que rentabilice las islas de combustible o carga eléctrica.</p>
+                </div>
+                
+                <!-- Dynamic Habits Section -->
+                <div>
+                  <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.8px; display: block; margin-bottom: 6px;">Hábitos de Consumo Destacados</span>
+                  <ul id="nodeInfoHabits" style="color: rgba(255,255,255,0.75); margin: 0; padding-left: 14px; line-height: 1.45; font-size: 0.78rem; display: flex; flex-direction: column; gap: 4px;">
+                    <li>Parada rápida para reabastecer e impulso de paso.</li>
+                    <li>Consumo inmediato de snacks, repostería y café caliente.</li>
+                    <li>Retiros rápidos de efectivo en corresponsalía bancaria.</li>
+                  </ul>
+                </div>
+
+                <!-- Demographic/Audience summary inside left column -->
+                <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; margin-top: 4px;">
+                  <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.8px; display: block; margin-bottom: 8px;">Composición del Tránsito Flotante</span>
+                  <div id="nodeInfoAudiences" style="display: flex; flex-direction: column; gap: 8px;">
+                    <!-- Audiences dynamically rendered by JS -->
+                  </div>
+                </div>
               </div>
-              <p id="nodeInfoDesc" style="font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 8px; line-height: 1.45;">Ubicado en la intersección de la Calle 19 con Carrera 30, este lote aprovecha una de las arterias más conectadas del centro de Bogotá. Es un punto de confluencia vial masiva.</p>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.72rem; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
-                <div><span style="color: var(--text-muted); display: block;">Flujo del Segmento:</span> <strong id="nodeInfoFlow" style="color:#fff;">42,100 veh/día (NQS/Cl.19)</strong></div>
-                <div><span style="color: var(--text-muted); display: block;">Categoría Ideal:</span> <strong id="nodeInfoMatch" style="color: var(--primary);">QSR (Café) & Droguerías (96%)</strong></div>
+
+              <!-- Right Column: Traffic Analytics Report & Interactive Chart -->
+              <div style="display: flex; flex-direction: column; gap: 14px;" class="sikai-dashboard-col-right">
+                <div style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 0.65rem; color: #888; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; font-family: var(--heading);">ANALÍTICA DE TRÁNSITO & AFLUENCIA</span>
+                  <span id="nodeInfoFlow" style="font-size: 0.75rem; color: #fff; font-weight: 800;">42,100 veh/día</span>
+                </div>
+
+                <!-- Interactive Bar Chart -->
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  <span style="font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Flujo Vehicular Relativo por Horas (IEV)</span>
+                  <div id="trafficChartContainer" style="display: flex; justify-content: space-between; align-items: flex-end; height: 75px; padding: 12px 12px 4px 12px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative;">
+                    <!-- Bars dynamically generated by JS -->
+                  </div>
+                  <!-- Chart Legend -->
+                  <div style="display: flex; justify-content: space-between; font-size: 0.52rem; color: #666; padding: 0 4px; font-family: monospace;">
+                    <span>4 AM</span>
+                    <span style="color: var(--primary); font-weight: 700;">8 AM (Pico)</span>
+                    <span>12 PM</span>
+                    <span style="color: var(--primary); font-weight: 700;">6 PM (Pico)</span>
+                    <span>10 PM</span>
+                  </div>
+                </div>
+
+                <!-- How to Read the Chart (Guía de Interpretación) -->
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 12px;">
+                  <span style="color: #fff; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Guía de Lectura de Afluencia Comercial</span>
+                  <p id="nodeInfoChartGuide" style="font-size: 0.72rem; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.45;">
+                    El gráfico representa el **Índice de Exposición Visual (IEV)**. Las barras verde neón indican los picos de congestión (NQS velocidad &lt; 18 km/h). Esto maximiza el tiempo de permanencia visual frente a la estación, elevando la conversión por impulso en un **180%** para formatos QSR (cafeterías) y droguerías de conveniencia.
+                  </p>
+                </div>
+
+                <!-- Key Traffic KPIs -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.7rem;">
+                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Afinidad de Marca (Fit)</span>
+                    <strong id="nodeInfoMatch" style="color: var(--primary); font-size: 0.76rem;">QSR & Droguería (96%)</strong>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Tasa de Captura (Est.)</span>
+                    <strong id="nodeInfoCapture" style="color: #fff; font-size: 0.76rem;">1.8% - 3.2%</strong>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Velocidad Media / Semáforo</span>
+                    <strong id="nodeInfoSpeed" style="color: #fff; font-size: 0.76rem;">18 km/h / Sem. 45s</strong>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
+                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Atracción Peatonal</span>
+                    <strong id="nodeInfoPedestrianFlow" style="color: #22d5c4; font-size: 0.76rem;">Baja (Vía Rápida)</strong>
+                  </div>
+                </div>
+
+                <!-- Brand Fit Suggestion / Action Plan -->
+                <div id="nodeInfoBrandFitAction" style="background: rgba(57,255,20,0.02); border: 1px dashed rgba(57,255,20,0.2); border-radius: 10px; padding: 10px; font-size: 0.72rem;">
+                  <strong style="color: var(--primary); text-transform: uppercase; font-size: 0.65rem; display: block; margin-bottom: 2px; font-family: var(--heading);">Recomendación SIKAI Consulting:</strong>
+                  <p id="nodeInfoRecommendationText" style="color: rgba(255,255,255,0.75); margin: 0; line-height: 1.35;">
+                    Establecer formato drive-thru y conveniencia express para capturar tráfico de paso de la Cra 30.
+                  </p>
+                </div>
+
               </div>
             </div>
 
-            <!-- Tabbed Analytical Details of Case Study -->
-            <div class="sikai-tabs-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 4px;">
-              <!-- Tabs Header -->
-              <div class="sikai-tabs-header" style="display: flex; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 4px; gap: 4px;">
-                <button class="sikai-tab-btn active" onclick="switchSikaiTab(0)">Tráfico & Flujo</button>
-                <button class="sikai-tab-btn" onclick="switchSikaiTab(1)">Audiencias</button>
-                <button class="sikai-tab-btn" onclick="switchSikaiTab(2)">Ajuste Comercial</button>
+            <!-- SIKAI Geomarketing Audit Table (KPI Matrix) -->
+            <div class="sikai-kpi-matrix card" style="margin-top: 24px; padding: 20px; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px; margin-bottom: 12px;">
+                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--heading);">Matriz Comparativa de Viabilidad Inmobiliaria</h5>
+                <span style="font-size: 0.6rem; color: var(--primary); font-weight: 800; border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: monospace;">REPORTE DE MUESTRA REAL</span>
               </div>
-
-              <!-- Tab Contents -->
-              <div class="sikai-tabs-content">
-                <!-- Tab 1: Trafico y Horas -->
-                <div class="sikai-tab-pane active" id="sikai-tab-0">
-                  <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.4;">Distribución de tráfico a lo largo del día en la intersección. Horas pico concentradas por flujos laborales y comerciales.</p>
-                    
-                    <!-- Simulated Hour Bar Chart -->
-                    <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 50px; padding: 8px 4px 0 4px; background: rgba(0,0,0,0.2); border-radius: 8px; margin-top: 4px;">
-                      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
-                        <div style="height: 12px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 2px 2px 0 0; max-width: 14px;"></div>
-                        <span style="font-size:0.5rem; color:#666; margin-top:2px;">4AM</span>
-                      </div>
-                      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
-                        <div style="height: 38px; width: 100%; background: var(--primary); border-radius: 2px 2px 0 0; max-width: 14px; box-shadow: 0 0 10px var(--primary-glow);"></div>
-                        <span style="font-size:0.5rem; color:var(--primary); font-weight:700; margin-top:2px;">8AM</span>
-                      </div>
-                      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
-                        <div style="height: 22px; width: 100%; background: rgba(255,255,255,0.2); border-radius: 2px 2px 0 0; max-width: 14px;"></div>
-                        <span style="font-size:0.5rem; color:#666; margin-top:2px;">12PM</span>
-                      </div>
-                      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
-                        <div style="height: 44px; width: 100%; background: var(--primary); border-radius: 2px 2px 0 0; max-width: 14px; box-shadow: 0 0 10px var(--primary-glow);"></div>
-                        <span style="font-size:0.5rem; color:var(--primary); font-weight:700; margin-top:2px;">6PM</span>
-                      </div>
-                      <div style="display:flex; flex-direction:column; align-items:center; flex:1;">
-                        <div style="height: 18px; width: 100%; background: rgba(255,255,255,0.15); border-radius: 2px 2px 0 0; max-width: 14px;"></div>
-                        <span style="font-size:0.5rem; color:#666; margin-top:2px;">10PM</span>
-                      </div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.72rem; margin-top: 4px;">
-                      <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px;">
-                        <span style="color: var(--text-muted); display: block;">Flujo Vehicular Total</span>
-                        <strong style="color: #fff; font-size: 0.85rem;">42,100 autos/día</strong>
-                      </div>
-                      <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px;">
-                        <span style="color: var(--text-muted); display: block;">Peatonal (Hora Pico)</span>
-                        <strong style="color: #fff; font-size: 0.85rem;">3,800 personas/hora</strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Tab 2: Audiencias -->
-                <div class="sikai-tab-pane" id="sikai-tab-1">
-                  <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Población flotante predominante identificada por SIKAI mediante celdas móviles de tráfico:</p>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
-                      <!-- Oficinistas/Abogados -->
-                      <div>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #fff; margin-bottom: 2px;">
-                          <span>Abogados, Jueces & Oficinistas (Juzgados)</span>
-                          <strong style="color:var(--primary);">42%</strong>
-                        </div>
-                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                          <div style="width: 42%; height: 100%; background: var(--primary); border-radius: 10px;"></div>
-                        </div>
-                      </div>
-                      <!-- Comerciantes -->
-                      <div>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #fff; margin-bottom: 2px;">
-                          <span>Comerciantes & Compradores (Paloquemao)</span>
-                          <strong style="color:var(--primary);">38%</strong>
-                        </div>
-                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                          <div style="width: 38%; height: 100%; background: var(--primary); border-radius: 10px;"></div>
-                        </div>
-                      </div>
-                      <!-- Salud -->
-                      <div>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #fff; margin-bottom: 2px;">
-                          <span>Médicos, Pacientes & Visitas (Hosp. Méderi)</span>
-                          <strong style="color:var(--primary);">20%</strong>
-                        </div>
-                        <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden;">
-                          <div style="width: 20%; height: 100%; background: var(--primary); border-radius: 10px;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Tab 3: Ajuste Comercial -->
-                <div class="sikai-tab-pane" id="sikai-tab-2">
-                  <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Índice de afinidad para marcas basado en los perfiles comerciales de la zona:</p>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px;">
-                      <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.1rem; color: var(--primary); font-weight: 900;">96%</span>
-                        <div>
-                          <h6 style="color:#fff; font-size:0.75rem; margin:0;">Café & QSR</h6>
-                          <p style="font-size:0.6rem; color:var(--text-muted); margin:0;">Alta recurrencia matutina/tarde</p>
-                        </div>
-                      </div>
-                      <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.1rem; color: var(--primary); font-weight: 900;">93%</span>
-                        <div>
-                          <h6 style="color:#fff; font-size:0.75rem; margin:0;">Droguería</h6>
-                          <p style="font-size:0.6rem; color:var(--text-muted); margin:0;">Uso preventivo/salud 24h</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <p style="font-size: 0.78rem; color: rgba(255,255,255,0.65); margin: 0 0 14px 0; line-height: 1.45;">
+                Este análisis compara los diferentes nodos comerciales que rodean el lote **STOP & GO**. Las marcas y franquicias que adquieren nuestro servicio reciben este reporte georreferenciado detallado para justificar su expansión física.
+              </p>
+              
+              <!-- Responsive Table Wrapper -->
+              <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.72rem; min-width: 580px;">
+                  <thead>
+                    <tr style="border-bottom: 1.5px solid rgba(255,255,255,0.1); color: #fff; font-weight: 800;">
+                      <th style="padding: 8px 6px;">Punto Comercial / Landmark</th>
+                      <th style="padding: 8px 6px;">Distancia</th>
+                      <th style="padding: 8px 6px; text-align: right;">Flujo Peatonal</th>
+                      <th style="padding: 8px 6px; text-align: right;">Flujo Vehicular</th>
+                      <th style="padding: 8px 6px; text-align: center;">Tasa Captura (Est.)</th>
+                      <th style="padding: 8px 6px; color: var(--primary); text-align: center;">Afinidad Fit</th>
+                    </tr>
+                  </thead>
+                  <tbody style="color: rgba(255,255,255,0.75);">
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04); background: rgba(57,255,20,0.02);">
+                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius:50%; background:var(--primary);"></span>
+                        STOP & GO (Punto Central)
+                      </td>
+                      <td style="padding: 8px 6px; color: var(--primary); font-weight: 700;">0m (Foco)</td>
+                      <td style="padding: 8px 6px; text-align: right;">~400 p/h</td>
+                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">42,100 v/día</td>
+                      <td style="padding: 8px 6px; text-align: center;">1.8% - 3.2%</td>
+                      <td style="padding: 8px 6px; font-weight: 700; color: var(--primary); text-align: center;">96%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius:50%; background:#eab308;"></span>
+                        Plaza Paloquemao
+                      </td>
+                      <td style="padding: 8px 6px;">150m (N-E)</td>
+                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">+15k/mañana</td>
+                      <td style="padding: 8px 6px; text-align: right;">~8,500 v/día</td>
+                      <td style="padding: 8px 6px; text-align: center;">0.8% - 1.2%</td>
+                      <td style="padding: 8px 6px; font-weight: 700; color: #eab308; text-align: center;">95%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius:50%; background:#3b82f6;"></span>
+                        Complejo Judicial (Juzgados)
+                      </td>
+                      <td style="padding: 8px 6px;">200m (N-E)</td>
+                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">+5k prof/día</td>
+                      <td style="padding: 8px 6px; text-align: right;">~4,200 v/día</td>
+                      <td style="padding: 8px 6px; text-align: center;">0.5% - 0.9%</td>
+                      <td style="padding: 8px 6px; font-weight: 700; color: #3b82f6; text-align: center;">94%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius:50%; background:#f43f5e;"></span>
+                        Hospital Méderi
+                      </td>
+                      <td style="padding: 8px 6px;">350m (S-O)</td>
+                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">+8k visitas/día</td>
+                      <td style="padding: 8px 6px; text-align: right;">~12,800 v/día</td>
+                      <td style="padding: 8px 6px; text-align: center;">1.2% - 2.0%</td>
+                      <td style="padding: 8px 6px; font-weight: 700; color: #f43f5e; text-align: center;">93%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius:50%; background:#a855f7;"></span>
+                        Mallplaza NQS
+                      </td>
+                      <td style="padding: 8px 6px;">450m (N-O)</td>
+                      <td style="padding: 8px 6px; text-align: right;">~1,200 p/h (Pico)</td>
+                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">35,500 v/día</td>
+                      <td style="padding: 8px 6px; text-align: center;">0.2% - 0.5%</td>
+                      <td style="padding: 8px 6px; font-weight: 700; color: #a855f7; text-align: center;">88%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
+                        <span style="width: 6px; height: 6px; border-radius:50%; background:#22d5c4;"></span>
+                        Estación TransMilenio
+                      </td>
+                      <td style="padding: 8px 6px;">100m (Acceso)</td>
+                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">3,800 p/h (Pico)</td>
+                      <td style="padding: 8px 6px; text-align: right; color: #666;">-- (Masivo)</td>
+                      <td style="padding: 8px 6px; text-align: center;">3.0% - 5.5%</td>
+                      <td style="padding: 8px 6px; font-weight: 700; color: #22d5c4; text-align: center;">91%</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
 
@@ -532,52 +657,152 @@
 
       </div>
     </div>
-  </section>
-
-  <script>
-    // Landmark Node Database for SIKAI Geomarketing case study
+  </section>0;">  <script>
+    // Landmark Node Database for SIKAI Geomarketing case study (Fully Expanded)
     const nodeData = {
       'stop-go': {
         title: 'Punto de Servicio STOP & GO',
         dist: 'Estación Central',
-        desc: 'Ubicado en la intersección de la Calle 19 con Carrera 30, este lote aprovecha una de las arterias más conectadas del centro de Bogotá. Es un punto de confluencia vial masiva.',
-        flow: '42,100 veh/día (NQS/Cl.19)',
-        match: 'QSR (Café) & Droguerías (96%)'
+        desc: 'Ubicado en la intersección de la Calle 19 con Carrera 30, este lote aprovecha una de las arterias viales y de transporte masivo más conectadas de Bogotá. Conecta de forma fluida el centro histórico, la zona judicial y el occidente residencial.',
+        opportunity: 'Intersección vial de categoría Metropolitana con flujo de velocidad reducida en hora pico, lo que incrementa el tiempo de exposición visual activa de las marcas a 42 segundos. Es un punto clave para establecer un hub de múltiples servicios comerciales (islas de carga/combustible, cajeros y conveniencia).',
+        habits: [
+          'Parada rápida de conductores particulares para recarga de combustible e impulso de conveniencia.',
+          'Compra cruzada de café, repostería y alimentos de preparación rápida en horarios pico.',
+          'Retiros bancarios y compra de medicamentos OTC de paso en la noche.'
+        ],
+        flow: '42,100 veh/día (Cra 30 / Cl 19)',
+        match: 'QSR & Farmacia (96%)',
+        capture: '1.8% - 3.2%',
+        speed: '18 km/h / Sem. 45s',
+        pedestrianFlow: 'Bajo-Medio (Acceso fluido)',
+        chartGuide: 'El gráfico representa el Índice de Exposición Visual (IEV) vehicular por hora. Las barras verde neón a las 8 AM y 6 PM muestran el momento de máxima congestión en la Carrera 30, donde la velocidad cae a 18 km/h y aumenta el tiempo de parada de los autos, elevando la conversión por impulso en un 180%.',
+        recommendationText: 'Desarrollar un local modular de 50m² que integre cafetería premium de paso y autoservicio (drive-thru).',
+        chartData: [10, 85, 50, 95, 30],
+        audiences: [
+          { label: 'Conductores Particulares', val: 55, color: 'var(--primary)' },
+          { label: 'Pasajeros de Paso NQS', val: 30, color: 'rgba(255,255,255,0.4)' },
+          { label: 'Peatones Locales', val: 15, color: 'rgba(255,255,255,0.2)' }
+        ]
       },
       'paloquemao': {
         title: 'Plaza de Mercado Paloquemao',
         dist: '150 metros (Norte-Oriente)',
-        desc: 'Uno de los centros de abastecimiento más grandes de la ciudad. Genera un flujo masivo de comerciantes, transportadores y compradores desde las 4:00 AM.',
-        flow: '+15,000 personas/mañana',
-        match: 'Desayunos, Café & Conveniencia (95%)'
+        desc: 'La Plaza de Paloquemao es el principal centro de acopio y abastecimiento agroalimentario del centro de Bogotá. Genera una afluencia masiva e ininterrumpida de compradores mayoristas y minoristas desde la madrugada.',
+        opportunity: 'Zona de alta tracción comercial en horarios no convencionales (madrugada). Sinergia perfecta con marcas de alimentos que operen desde las 4 AM, captando un público de alta frecuencia y decisión de compra inmediata.',
+        habits: [
+          'Consumo de desayunos tradicionales calientes y panadería en las primeras horas del día.',
+          'Bebidas energéticas e hidratación para personal operativo y transportadores de carga.',
+          'Compras rápidas de conveniencia complementaria antes del inicio de la jornada laboral.'
+        ],
+        flow: '+15,000 personas / mañana',
+        match: 'Alimentos & Conveniencia (95%)',
+        capture: '0.8% - 1.2%',
+        speed: '22 km/h / Tránsito de carga',
+        pedestrianFlow: 'Muy Alto (4 AM - 12 PM)',
+        chartGuide: 'El gráfico muestra cómo la afluencia en este nodo se desplaza drásticamente hacia las primeras horas del día (pico entre las 5 AM y las 9 AM). Este comportamiento representa una oportunidad exclusiva para marcas que ofrecen alimentos calientes, hidratación y recarga energética en horarios en que el resto de la ciudad está inactivo.',
+        recommendationText: 'Módulo comercial de montaje rápido de 25m² enfocado en desayunos de servicio ultra-rápido y panadería tradicional desde las 4 AM.',
+        chartData: [85, 90, 40, 25, 10],
+        audiences: [
+          { label: 'Comerciantes & Proveedores', val: 60, color: '#eab308' },
+          { label: 'Compradores Minoristas', val: 30, color: 'rgba(255,255,255,0.4)' },
+          { label: 'Tránsito de Carga', val: 10, color: 'rgba(255,255,255,0.2)' }
+        ]
       },
       'juzgados': {
         title: 'Complejo Judicial Paloquemao',
         dist: '200 metros (Nor-Oriente)',
-        desc: 'Sede principal de juzgados en Bogotá. Genera tránsito continuo de profesionales (abogados, jueces, administrativos) durante las horas laborales de oficina (8am - 6pm).',
-        flow: '+5,000 profesionales/día',
-        match: 'Café Premium, Almuerzos & Trámites (94%)'
+        desc: 'Sede principal de los juzgados civiles, penales y laborales de Bogotá. Concentra diariamente una población flotante altamente profesional y administrativa con ingresos estables y hábitos de consumo corporativos de lunes a viernes.',
+        opportunity: 'Público profesional cautivo que requiere servicios de paso durante su jornada laboral. Excelente afinidad para formatos de alimentación premium, cafeterías especializadas y servicios de copiado o trámites.',
+        habits: [
+          'Reuniones de trabajo rápidas acompañadas de café de marca premium.',
+          'Almuerzos ejecutivos ligeros de alta calidad (QSR de sándwiches/ensaladas).',
+          'Snacks y cafeína de recarga a media tarde.'
+        ],
+        flow: '+5,000 profesionales / día',
+        match: 'Cafetería & Almuerzos QSR (94%)',
+        capture: '0.5% - 0.9%',
+        speed: '15 km/h / Alto tránsito peatonal',
+        pedestrianFlow: 'Alto (Lunes a Viernes)',
+        chartGuide: 'La curva de afluencia de los juzgados presenta un perfil estrictamente laboral de oficina. Muestra una meseta sostenida entre las 8 AM y las 5 PM, con picos marcados al mediodía (almuerzos) y media tarde (café). La conversión de ticket promedio es la más alta del cuadrante.',
+        recommendationText: 'Espacio de cafetería de autor con excelente conectividad Wi-Fi y sándwich-bar gourmet de atención ágil en formato modular.',
+        chartData: [5, 60, 80, 75, 15],
+        audiences: [
+          { label: 'Abogados & Litigantes', val: 50, color: '#3b82f6' },
+          { label: 'Personal Judicial', val: 35, color: 'rgba(255,255,255,0.4)' },
+          { label: 'Usuarios Generales', val: 15, color: 'rgba(255,255,255,0.2)' }
+        ]
       },
       'mederi': {
         title: 'Hospital Universitario Méderi',
         dist: '350 metros (Sur-Occidente)',
-        desc: 'El hospital de mayor capacidad en la zona centro. Genera tránsito constante y flujo de público las 24 horas del día, incrementando la demanda nocturna y de fines de semana.',
-        flow: '+8,000 visitas/día (24/7)',
-        match: 'Droguerías, Cuidado & Snacks 24h (93%)'
+        desc: 'El Hospital Méderi es uno de los complejos hospitalarios de mayor tamaño y capacidad del país. Funciona las 24 horas del día, los 365 días del año, atrayendo personal de salud en turnos rotativos, pacientes de consulta y acompañantes.',
+        opportunity: 'Demanda constante 24/7 de servicios de salud, farmacia y alimentación rápida. Ventaja competitiva única para marcas de farmacia al ofrecer estacionamiento cómodo y seguro en la estación, evitando la congestión de los accesos hospitalarios.',
+        habits: [
+          'Compra urgente de recetas médicas, medicamentos OTC y aseo personal a cualquier hora.',
+          'Consumo nocturno de alimentos calientes y café por parte de personal de turnos y familiares.',
+          'Compras de impulso de snacks, dulces y bebidas para acompañantes de pacientes.'
+        ],
+        flow: '+8,000 visitas / día (24/7)',
+        match: 'Droguería & Alimentos 24h (93%)',
+        capture: '1.2% - 2.0%',
+        speed: '20 km/h / Ambulancias frecuentes',
+        pedestrianFlow: 'Alto (Tránsito constante 24h)',
+        chartGuide: 'El perfil de tránsito de Méderi es el más plano y continuo de todos los nodos. Mantiene una barra de actividad importante incluso en horas de la noche y madrugada (10 PM a 4 AM). Las droguerías y locales de conveniencia 24h capturan este mercado nocturno desatendido en la zona.',
+        recommendationText: 'Establecer una farmacia-tienda de conveniencia de 24 horas con ventana de atención directa peatonal y vehicular en un módulo de 35m².',
+        chartData: [40, 55, 65, 70, 50],
+        audiences: [
+          { label: 'Personal Médico (Turnos)', val: 45, color: '#f43f5e' },
+          { label: 'Familiares de Pacientes', val: 40, color: 'rgba(255,255,255,0.4)' },
+          { label: 'Estudiantes de Medicina', val: 15, color: 'rgba(255,255,255,0.2)' }
+        ]
       },
       'mallplaza': {
         title: 'Mallplaza NQS (C.C. Calima)',
         dist: '450 metros (Norte-Occidente)',
-        desc: 'Gran centro comercial que actúa como imán de tráfico minorista y de esparcimiento en tardes y fines de semana, atrayendo flujo complementario.',
+        desc: 'Gran centro comercial ubicado sobre la Av. NQS que atrae flujos vehiculares y peatonales masivos de carácter recreativo, de compras y esparcimiento familiar, concentrados en tardes y fines de semana.',
+        opportunity: 'Capturar el tráfico complementario de fin de semana y ocio. Sinergia excelente para exhibición de marca y servicios complementarios de paso rápido que eviten las demoras de parqueo dentro de un gran centro comercial.',
+        habits: [
+          'Consumo de helados, postres y bebidas frías en tardes soleadas.',
+          'Trámites de servicios bancarios, recarga de telefonía y giros de paso rápido.',
+          'Antojos y compras espontáneas de última hora en el trayecto de regreso a casa.'
+        ],
         flow: 'Flujo Minorista Semanal Alto',
-        match: 'Servicios, Snacks & Exhibición (88%)'
+        match: 'Snacks, Helados & Servicios (88%)',
+        capture: '0.2% - 0.5%',
+        speed: '30 km/h / Flujo vehicular continuo',
+        pedestrianFlow: 'Medio (Flujo recreativo)',
+        chartGuide: 'La afluencia de Mallplaza se concentra en las horas de la tarde (2 PM a 7 PM) y explota durante los fines de semana. Funciona como un polo de atracción de ocio. Las marcas de paso en la estación STOP & GO ofrecen una alternativa "express" para compras rápidas de conveniencia sin tener que entrar al centro comercial.',
+        recommendationText: 'Kiosco modular externo de postres, helados y jugos naturales enfocado en compras rápidas para peatones y familias.',
+        chartData: [10, 30, 55, 80, 45],
+        audiences: [
+          { label: 'Compradores de Fin de Semana', val: 65, color: '#a855f7' },
+          { label: 'Empleados del Sector Retail', val: 25, color: 'rgba(255,255,255,0.4)' },
+          { label: 'Vecinos de la Localidad', val: 10, color: 'rgba(255,255,255,0.2)' }
+        ]
       },
       'transmilenio': {
         title: 'Estación TM Paloquemao',
         dist: '100 metros (Acceso Peatonal)',
-        desc: 'Conector principal con el sistema de transporte masivo. Aporta un caudal de tráfico peatonal de paso rápido ("on-the-go") de alta densidad.',
-        flow: '3,800 personas/hora (Hora Pico)',
-        match: 'Café de Paso, Cajeros & Recargas (91%)'
+        desc: 'Estación del sistema de transporte masivo TransMilenio sobre la Av. NQS. Es uno de los principales embudos de flujo peatonal de la zona, canalizando miles de personas por hora que viajan al centro y norte de la ciudad.',
+        opportunity: 'Flujo peatonal masivo de alta velocidad ("on-the-go"). Máxima rentabilidad para formatos compactos que atiendan en menos de 60 segundos por cliente, optimizando el despacho en las horas pico de entrada y salida.',
+        habits: [
+          'Café express caliente y repostería para consumir durante la caminata al portal.',
+          'Recargas rápidas de tarjetas de transporte, saldo móvil y compra de snacks embolsados.',
+          'Retiro rápido en cajeros automáticos antes de ingresar al sistema masivo.'
+        ],
+        flow: '3,800 personas/hora (Picos)',
+        match: 'Café de Paso, Recargas & ATM (91%)',
+        capture: '3.0% - 5.5%',
+        speed: 'Flujo Peatonal Acelerado',
+        pedestrianFlow: 'Crítico (Viajes pendulares)',
+        chartGuide: 'Este gráfico muestra dos picos extremos de flujo peatonal (7:30 AM y 6:00 PM) que coinciden con los viajes pendulares de los bogotanos. La velocidad de compra es la variable crítica: los clientes deciden en 5 segundos y requieren atención en menos de 45 segundos.',
+        recommendationText: 'Local formato "Grab & Go" (Toma y Lleva) de 15m² especializado en tinto, combos de desayuno express y recargas de servicios.',
+        chartData: [5, 95, 30, 98, 20],
+        audiences: [
+          { label: 'Usuarios Pendulares (Trabajo)', val: 75, color: '#22d5c4' },
+          { label: 'Estudiantes Universitarios', val: 15, color: 'rgba(255,255,255,0.4)' },
+          { label: 'Público General de Tránsito', val: 10, color: 'rgba(255,255,255,0.2)' }
+        ]
       }
     };
 
@@ -601,13 +826,72 @@
           document.getElementById('nodeInfoTitle').innerText = data.title;
           document.getElementById('nodeInfoDist').innerText = data.dist;
           document.getElementById('nodeInfoDesc').innerText = data.desc;
+          document.getElementById('nodeInfoOpportunity').innerText = data.opportunity;
           document.getElementById('nodeInfoFlow').innerText = data.flow;
+          document.getElementById('nodeInfoMatch').innerText = data.match;
+          document.getElementById('nodeInfoCapture').innerText = data.capture;
+          document.getElementById('nodeInfoSpeed').innerText = data.speed;
+          document.getElementById('nodeInfoPedestrianFlow').innerText = data.pedestrianFlow;
+          document.getElementById('nodeInfoChartGuide').innerHTML = data.chartGuide;
+          document.getElementById('nodeInfoRecommendationText').innerText = data.recommendationText;
           
-          const matchEl = document.getElementById('nodeInfoMatch');
-          matchEl.innerText = data.match;
+          // Clear and populate habits
+          const habitsList = document.getElementById('nodeInfoHabits');
+          habitsList.innerHTML = '';
+          data.habits.forEach(habit => {
+            const li = document.createElement('li');
+            li.innerText = habit;
+            habitsList.appendChild(li);
+          });
+          
+          // Generate audiences dynamically
+          const audienceContainer = document.getElementById('nodeInfoAudiences');
+          audienceContainer.innerHTML = '';
+          data.audiences.forEach(aud => {
+            const wrap = document.createElement('div');
+            wrap.style.cssText = 'display: flex; flex-direction: column; gap: 2px; font-size: 0.7rem;';
+            
+            const labelRow = document.createElement('div');
+            labelRow.style.cssText = 'display: flex; justify-content: space-between; color: #fff; font-weight: 600;';
+            labelRow.innerHTML = `<span>${aud.label}</span><strong style="color: ${aud.color}">${aud.val}%</strong>`;
+            
+            const barOuter = document.createElement('div');
+            barOuter.style.cssText = 'width: 100%; height: 5px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;';
+            
+            const barInner = document.createElement('div');
+            barInner.style.cssText = `width: ${aud.val}%; height: 100%; background: ${aud.color}; border-radius: 4px; transition: width 0.4s ease;`;
+            
+            barOuter.appendChild(barInner);
+            wrap.appendChild(labelRow);
+            wrap.appendChild(barOuter);
+            
+            audienceContainer.appendChild(wrap);
+          });
+
+          // Generate dynamic traffic chart bars
+          const chartContainer = document.getElementById('trafficChartContainer');
+          chartContainer.innerHTML = '';
+          data.chartData.forEach((val, idx) => {
+            const barWrap = document.createElement('div');
+            barWrap.style.cssText = 'display:flex; flex-direction:column; align-items:center; flex:1; height: 100%; justify-content: flex-end;';
+            
+            const bar = document.createElement('div');
+            bar.style.cssText = `height: ${val}%; width: 100%; max-width: 18px; border-radius: 3px 3px 0 0; transition: height 0.4s ease;`;
+            
+            if (idx === 1 || idx === 3) {
+              bar.style.background = 'var(--primary)';
+              bar.style.boxShadow = '0 0 10px var(--primary-glow)';
+            } else {
+              bar.style.background = 'rgba(255,255,255,0.25)';
+            }
+            
+            barWrap.appendChild(bar);
+            chartContainer.appendChild(barWrap);
+          });
           
           // Color badge based on nodeId role
           const distBadge = document.getElementById('nodeInfoDist');
+          const matchEl = document.getElementById('nodeInfoMatch');
           if (nodeId === 'stop-go') {
             distBadge.style.background = 'rgba(57,255,20,0.15)';
             distBadge.style.color = 'var(--primary)';
@@ -652,10 +936,17 @@
       
       if (layerId === 'radios') {
         const rings = document.querySelectorAll('.map-range-rings');
+        const sweep = document.getElementById('radarSweep');
+        const crosshairsH = document.querySelector('.map-crosshair-h');
+        const crosshairsV = document.querySelector('.map-crosshair-v');
         btn.classList.toggle('active');
+        const show = btn.classList.contains('active') ? '1' : '0';
         rings.forEach(ring => {
-          ring.style.opacity = btn.classList.contains('active') ? '1' : '0';
+          ring.style.opacity = show;
         });
+        if (sweep) sweep.style.opacity = show;
+        if (crosshairsH) crosshairsH.style.opacity = show;
+        if (crosshairsV) crosshairsV.style.opacity = show;
       } else {
         if (layerId === 'traffic') layer = document.getElementById('mapTrafficLayer');
         if (layerId === 'heatmap') layer = document.getElementById('mapHeatmapLayer');
@@ -679,12 +970,11 @@
       document.getElementById('geomapCanvas').style.setProperty('--zoom-level', zoomLevel);
     }
 
-    // Tab Switching inside SIKAI dashboard
-    window.switchSikaiTab = function(idx) {
-      const btns = document.querySelectorAll('.sikai-tab-btn');
-      const panes = document.querySelectorAll('.sikai-tab-pane');
-      
-      btns.forEach((btn, i) => {
+    // Initial load setup for default node
+    document.addEventListener("DOMContentLoaded", function() {
+      selectMapNode('stop-go');
+    });
+  </script> btns.forEach((btn, i) => {
         btn.classList.toggle('active', i === idx);
       });
       panes.forEach((pane, i) => {
