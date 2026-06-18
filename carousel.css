@@ -1,0 +1,262 @@
+/* ===================================================
+   GALLERY CAROUSEL + LIGHTBOX  — stop-and-go-landing
+   =================================================== */
+
+/* ---------- CAROUSEL WRAPPER ---------- */
+.sg-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: grab;
+  user-select: none;
+}
+.sg-carousel:active { cursor: grabbing; }
+
+/* ---------- TRACK & SLIDES ---------- */
+.sg-carousel-track {
+  display: flex;
+  height: 520px;
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform;
+}
+
+.sg-slide {
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sg-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1),
+              filter 0.5s ease;
+  filter: brightness(0.7) saturate(0.8);
+}
+
+.sg-slide.active img {
+  filter: brightness(1) saturate(1.1);
+}
+
+.sg-slide:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.05) saturate(1.2);
+  cursor: zoom-in;
+}
+
+/* ---------- SLIDE INFO OVERLAY ---------- */
+.sg-slide-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 60px 48px 32px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sg-slide.active .sg-slide-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sg-slide-info span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.sg-slide-info p {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--heading);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- ARROWS ---------- */
+.sg-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(7,7,9,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+  backdrop-filter: blur(8px);
+}
+
+.sg-arrow:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #000;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.sg-arrow-prev { left: 24px; }
+.sg-arrow-next { right: 24px; }
+
+/* ---------- DOTS ---------- */
+.sg-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sg-dot {
+  width: 8px; height: 8px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: width 0.4s ease, background 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.sg-dot.active {
+  width: 28px;
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* ---------- PROGRESS BAR ---------- */
+.sg-progress {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  z-index: 10;
+}
+
+.sg-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ---------- THUMBNAILS STRIP ---------- */
+.sg-thumbs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 0 5% 20px;
+  scrollbar-width: none;
+}
+
+.sg-thumbs::-webkit-scrollbar { display: none; }
+
+.sg-thumb {
+  flex-shrink: 0;
+  width: 110px; height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s, transform 0.3s, opacity 0.3s;
+  opacity: 0.5;
+}
+
+.sg-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.sg-thumb.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+.sg-thumb:hover { opacity: 0.8; }
+
+/* ---------- LIGHTBOX ---------- */
+.sg-lightbox {
+  position: fixed; inset: 0; z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.sg-lightbox.open { opacity: 1; pointer-events: all; }
+
+.sg-lb-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(16px);
+  cursor: zoom-out;
+}
+
+.sg-lb-img {
+  position: relative; z-index: 2;
+  max-width: 90vw; max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sg-lightbox.open .sg-lb-img { transform: scale(1); }
+
+.sg-lb-close {
+  position: absolute; top: 20px; right: 24px; z-index: 10;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s, transform 0.3s;
+}
+.sg-lb-close:hover { background: var(--accent); transform: rotate(90deg); }
+
+.sg-lb-arrow {
+  position: absolute; z-index: 3;
+  top: 50%; transform: translateY(-50%);
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s, transform 0.4s;
+}
+.sg-lb-arrow:hover { background: var(--primary); color: #000; }
+.sg-lb-prev { left: 24px; }
+.sg-lb-next { right: 24px; }
+.sg-lb-prev:hover { transform: translateY(-50%) scale(1.1); }
+.sg-lb-next:hover { transform: translateY(-50%) scale(1.1); }
+
+.sg-lb-caption {
+  position: absolute; bottom: 20px; left: 50%;
+  transform: translateX(-50%); z-index: 3;
+  color: rgba(255,255,255,0.7); font-size: 0.9rem;
+  font-family: var(--heading); font-weight: 600;
+  text-align: center; white-space: nowrap;
+  background: rgba(0,0,0,0.5); padding: 8px 20px; border-radius: 100px;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+  .sg-carousel-track { height: 280px; }
+  .sg-slide-info p { font-size: 1rem; }
+  .sg-thumb { width: 80px; height: 52px; }
+  .sg-arrow { width: 40px; height: 40px; }
+  .sg-arrow-prev { left: 10px; }
+  .sg-arrow-next { right: 10px; }
+}
