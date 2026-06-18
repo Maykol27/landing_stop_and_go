@@ -714,6 +714,28 @@ footer {
 @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 @keyframes scroll-down { 0%{ transform: scaleY(1); transform-origin: top; } 50%{ transform: scaleY(1); transform-origin: bottom; } 100%{ transform: scaleY(0); transform-origin: bottom; } }
 
+/* ========== CGBI & SIKAI CUSTOM SECTIONS ========== */
+.cgbi-graphic-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.cgbi-graphic-card:hover {
+  border-color: rgba(57, 255, 20, 0.2);
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(57, 255, 20, 0.05);
+}
+.sikai-dashboard {
+  transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.sikai-dashboard:hover {
+  border-color: var(--primary) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--primary-glow) !important;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 1100px) {
   .lineas-grid { grid-template-columns: repeat(2, 1fr); height: auto; }
@@ -724,7 +746,7 @@ footer {
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
-  .prob-sol-grid, .biz-grid, .quienes-grid, .dif-grid, .contact-wrap { grid-template-columns: 1fr; }
+  .prob-sol-grid, .biz-grid, .quienes-grid, .dif-grid, .contact-wrap, .grid-2col { grid-template-columns: 1fr; }
   .portfolio-grid, .aliados-grid { grid-template-columns: 1fr 1fr; }
   .roi-bar { grid-template-columns: repeat(2, 1fr); }
   .roi-item { border-bottom: 1px solid var(--border); }
@@ -740,7 +762,7 @@ footer {
   .hero-stats { gap: 32px; }
   .hero-stat h3 { font-size: 1.8rem; }
   .lineas-grid { grid-template-columns: 1fr; }
-  .portfolio-grid, .aliados-grid, .valores-grid, .canales-grid, .dif-items { grid-template-columns: 1fr; }
+  .portfolio-grid, .aliados-grid, .valores-grid, .canales-grid, .dif-items, .grid-2col { grid-template-columns: 1fr; }
   .canal-card { height: 340px; }
   .metodo-grid { grid-template-columns: 1fr; }
   .roi-bar { grid-template-columns: repeat(2, 1fr); }
