@@ -144,7 +144,7 @@
           <!-- Map HUD Header -->
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
             <span style="font-size: 0.65rem; color: var(--primary); font-family: monospace; font-weight: 800; letter-spacing: 1px;">SISTEMA DE COBERTURA STOP & GO v1.0</span>
-            <span id="activeZoneName" style="background: rgba(57,255,20,0.1); border: 1px solid var(--primary); color: var(--primary); font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">ZONA: TODAS</span>
+            <span style="background: rgba(57,255,20,0.1); border: 1px solid var(--primary); color: var(--primary); font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">COBERTURA TOTAL</span>
           </div>
 
           <!-- The SVG Map -->
@@ -300,39 +300,27 @@
             </div>
           </div>
 
-          <!-- Zone Selector Buttons -->
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <span style="font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">Filtrar por Zona Comercial</span>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-              <button class="btn-zone-filter active" onclick="filterBogotaZone('all')">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: #fff; display: inline-block; margin-right: 6px;"></span>
-                Todas las Zonas
-              </button>
-              <button class="btn-zone-filter" onclick="filterBogotaZone('north')">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
-                Norte (64 puntos)
-              </button>
-              <button class="btn-zone-filter" onclick="filterBogotaZone('center')">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
-                Centro-Oriente (58 puntos)
-              </button>
-              <button class="btn-zone-filter" onclick="filterBogotaZone('west')">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
-                Occidente (49 puntos)
-              </button>
-              <button class="btn-zone-filter" onclick="filterBogotaZone('south')">
-                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
-                Sur (79 puntos)
-              </button>
-            </div>
-          </div>
-
-          <!-- Dynamic Zone Details Card -->
-          <div id="zoneDetailsCard" class="card" style="padding: 18px; background: rgba(57,255,20,0.02); border: 1px dashed rgba(57,255,20,0.15); border-radius: 16px; min-height: 90px; display: flex; flex-direction: column; justify-content: center; gap: 4px; transition: all 0.3s ease;">
-            <strong id="zoneDetailsTitle" style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; font-family: var(--heading); letter-spacing: 0.5px;">Cobertura Consolidada en Bogotá</strong>
-            <p id="zoneDetailsDesc" style="font-size: 0.76rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.4;">
-              Haz clic en cualquiera de las zonas para detallar la concentración de estaciones disponibles y el flujo de tráfico promedio validado por SIKAI Consulting.
-            </p>
+          <!-- Coverage features list -->
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+            <span style="font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">Ventajas de nuestra red activa</span>
+            <ul class="check-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 0.82rem; color: rgba(255,255,255,0.8);">
+              <li style="display: flex; gap: 8px; align-items: flex-start;">
+                <span style="color: var(--primary); font-weight: 800;">✓</span>
+                <span><strong>Acceso Directo a Tráfico:</strong> Estaciones sobre vías arterias de máxima afluencia (Autopista Norte, Carrera 30, Calle 26, Av. Boyacá).</span>
+              </li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;">
+                <span style="color: var(--primary); font-weight: 800;">✓</span>
+                <span><strong>Estudios de Geomarketing:</strong> Cada punto cuenta con un análisis previo de flujos de tránsito y perfil demográfico de consumidores.</span>
+              </li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;">
+                <span style="color: var(--primary); font-weight: 800;">✓</span>
+                <span><strong>Estructuración Integral:</strong> Tramitología unificada con las estaciones de servicio para una firma de contrato ágil y sin fricciones.</span>
+              </li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;">
+                <span style="color: var(--primary); font-weight: 800;">✓</span>
+                <span><strong>Montaje en Tiempo Récord:</strong> Puntos listos para la instalación de módulos prefabricados en un plazo máximo de 30 días.</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1076,63 +1064,6 @@
   </section>
 
   <script>
-    // Cobertura Bogotá Interactive Map functions
-    const zoneDetails = {
-      'all': {
-        title: 'Cobertura Consolidada en Bogotá',
-        desc: 'Nuestra red cubre 20 localidades de Bogotá con +250 ubicaciones disponibles en estaciones de servicio y corredores viales principales. Todas validadas con geomarketing por SIKAI Consulting.'
-      },
-      'north': {
-        title: 'Zona Norte (Usaquén, Suba)',
-        desc: '64 ubicaciones disponibles. Zonas de alta densidad residencial (estratos 4, 5 y 6) con flujo vehicular premium. Autopista Norte, Av. Boyacá y Calle 170. Ideal para droguerías, QSR y tiendas gourmet.'
-      },
-      'center': {
-        title: 'Zona Centro-Oriente (Chapinero, Teusaquillo, B. Unidos)',
-        desc: '58 ubicaciones disponibles. Entorno corporativo, estudiantil e institucional de altísimo flujo peatonal y vehicular diario. Carrera 30, Calle 72 y Calle 26. Ideal para cafeterías premium, cajeros y copiado.'
-      },
-      'west': {
-        title: 'Zona Occidente (Engativá, Fontibón)',
-        desc: '49 ubicaciones disponibles. Conectividad directa con el Aeropuerto El Dorado y zonas industriales de alto flujo de carga y logística. Av. El Dorado, Av. Ciudad de Cali. Ideal para comidas rápidas y tiendas de mascotas.'
-      },
-      'south': {
-        title: 'Zona Sur (Puente Aranda, Kennedy, Bosa, Ciudad Bolívar)',
-        desc: '79 ubicaciones disponibles. Zonas industriales y comerciales populares de altísima densidad comercial e industrial. Autopista Sur, Av. Villavicencio. Ideal para QSR de alta frecuencia y droguerías 24h.'
-      }
-    };
-
-    window.filterBogotaZone = function(zoneId) {
-      document.querySelectorAll('.btn-zone-filter').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.currentTarget.classList.add('active');
-
-      const details = zoneDetails[zoneId];
-      if (details) {
-        document.getElementById('zoneDetailsTitle').innerText = details.title;
-        document.getElementById('zoneDetailsDesc').innerText = details.desc;
-        document.getElementById('activeZoneName').innerText = `ZONA: ${zoneId === 'all' ? 'TODAS' : zoneId.toUpperCase()}`;
-      }
-
-      const spots = document.querySelectorAll('.map-spot-marker');
-      spots.forEach(spot => {
-        const pulse = spot.querySelector('.spot-pulse-anim');
-        if (zoneId === 'all') {
-          spot.style.opacity = '1';
-          if (pulse) pulse.setAttribute('fill', 'rgba(57,255,20,0.12)');
-        } else {
-          if (spot.classList.contains('spot-' + zoneId)) {
-            spot.style.opacity = '1';
-            if (pulse) pulse.setAttribute('fill', 'rgba(57,255,20,0.35)');
-            spot.style.transform = 'scale(1.2)';
-            setTimeout(() => { spot.style.transform = 'scale(1)'; }, 300);
-          } else {
-            spot.style.opacity = '0.15';
-            if (pulse) pulse.setAttribute('fill', 'rgba(255,255,255,0.02)');
-          }
-        }
-      });
-    };
-
     // Formatos de Negocio Category Filtering function
     window.filterFormats = function(catId) {
       document.querySelectorAll('.filter-format-btn').forEach(btn => {
