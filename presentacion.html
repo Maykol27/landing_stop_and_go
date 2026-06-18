@@ -230,6 +230,26 @@
       border-color: rgba(255,255,255,0.2);
     }
 
+    .slide-body-scrollable {
+      overflow-y: auto;
+      max-height: 100%;
+      width: 100%;
+      padding-right: 15px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(255,255,255,0.05);
+    }
+    .slide-body-scrollable::-webkit-scrollbar {
+      width: 6px;
+    }
+    .slide-body-scrollable::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.02);
+      border-radius: 3px;
+    }
+    .slide-body-scrollable::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
     /* ========================================================
        SLIDE STYLES & LAYOUTS
        ======================================================== */
@@ -824,6 +844,25 @@
     .cta-info span strong {
       color: var(--primary);
     }
+
+    /* Bogotá Coverage Map Presentation Styles */
+    .locality-sector {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .locality-sector:hover {
+      fill: rgba(57, 255, 20, 0.03);
+      stroke: rgba(57, 255, 20, 0.2);
+    }
+    .spot-pulse-anim {
+      animation: spot-glow-pulse 2.2s infinite ease-in-out;
+      transform-origin: center;
+    }
+    @keyframes spot-glow-pulse {
+      0% { r: 6; opacity: 0.8; }
+      50% { r: 12; opacity: 0.2; }
+      100% { r: 6; opacity: 0.8; }
+    }
   </style>
 </head>
 <body>
@@ -899,7 +938,7 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 2 / 8</span>
+        <span>Diapositiva 2 / 11</span>
       </div>
     </div>
 
@@ -956,14 +995,295 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 3 / 8</span>
+        <span>Diapositiva 3 / 11</span>
       </div>
     </div>
 
     <!-- ========================================================
-         SLIDE 4: PORTAFOLIO DE MÓDULOS
+         SLIDE 4: COBERTURA METROPOLITANA (BOGOTÁ)
          ======================================================== -->
     <div class="slide" id="slide-3">
+      <div class="slide-header">
+        <div>
+          <span class="slide-label">Red Metropolitana</span>
+          <h2 class="slide-title">Cobertura en <em>Bogotá</em></h2>
+        </div>
+        <div class="slide-logo"><img src="/assets/logostop&amp;go.jpeg" alt="Logo"></div>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2col" style="align-items: center; gap: 30px;">
+          <!-- Left Column: Bogotá Map -->
+          <div style="position: relative; background: #070709; border: 1px solid rgba(57,255,20,0.1); border-radius: 20px; padding: 10px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; height: 390px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+            <svg id="svgBogotaMap" width="100%" height="100%" viewBox="0 0 400 500" style="background: transparent;">
+              <defs>
+                <filter id="glow-green-map-slide" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              
+              <!-- Bogotá Background Outer Outline -->
+              <path d="M 170 30 C 220 35, 250 50, 260 70 C 270 90, 290 120, 290 150 C 290 180, 275 220, 265 240 C 255 260, 250 290, 240 330 C 230 370, 220 410, 210 440 C 200 470, 180 490, 160 490 C 140 490, 120 470, 110 440 C 100 410, 95 360, 95 320 C 95 280, 80 240, 95 200 C 110 160, 115 130, 115 100 C 115 70, 130 40, 170 30 Z" fill="#0f0f14" stroke="#1f2029" stroke-width="2" />
+              
+              <!-- Bogotá Localities Polygons / Sectors -->
+              <path class="locality-sector sec-north" d="M 170 30 Q 230 35 260 70 L 280 130 L 195 140 L 120 100 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <path class="locality-sector sec-center" d="M 195 140 L 280 130 Q 285 170 270 210 L 190 200 L 175 160 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <path class="locality-sector sec-west" d="M 120 100 L 195 140 L 175 160 L 190 200 L 135 220 L 105 180 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <path class="locality-sector sec-south" d="M 135 220 L 190 200 Q 255 250 240 330 L 180 460 Q 130 460 110 420 L 95 320 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              
+              <!-- Neon Road Network -->
+              <path d="M 200 45 L 205 130 Q 195 180 190 240 L 165 360 L 155 450" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="2,4" />
+              <path d="M 275 170 Q 200 165 145 160 L 115 155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="2,4" />
+              <path d="M 150 50 Q 155 120 145 200 L 135 300 Q 125 380 140 460" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+              <path d="M 220 90 L 125 85" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+              <path d="M 250 220 L 125 210" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+
+              <!-- MAP MARKERS -->
+              <g class="map-spot-marker spot-north" cx="215" cy="80">
+                <circle cx="215" cy="80" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="215" cy="80" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-north" cx="165" cy="70">
+                <circle cx="165" cy="70" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="165" cy="70" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-north" cx="180" cy="95">
+                <circle cx="180" cy="95" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="180" cy="95" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-north" cx="220" cy="55">
+                <circle cx="220" cy="55" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="220" cy="55" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-north" cx="235" cy="90">
+                <circle cx="235" cy="90" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="235" cy="90" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+
+              <g class="map-spot-marker spot-center" cx="230" cy="145">
+                <circle cx="230" cy="145" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="230" cy="145" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-center" cx="205" cy="170">
+                <circle cx="205" cy="170" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="205" cy="170" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-center" cx="185" cy="135">
+                <circle cx="185" cy="135" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="185" cy="135" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-center" cx="195" cy="190">
+                <circle cx="195" cy="190" r="15" fill="rgba(57,255,20,0.25)" class="spot-pulse-anim" />
+                <circle cx="195" cy="190" r="5" fill="#fff" stroke="var(--primary)" stroke-width="2" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-center" cx="220" cy="180">
+                <circle cx="220" cy="180" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="220" cy="180" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+
+              <g class="map-spot-marker spot-west" cx="140" cy="105">
+                <circle cx="140" cy="105" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="140" cy="105" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-west" cx="145" cy="130">
+                <circle cx="145" cy="130" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="145" cy="130" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-west" cx="150" cy="155">
+                <circle cx="150" cy="155" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="150" cy="155" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-west" cx="130" cy="180">
+                <circle cx="130" cy="180" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="130" cy="180" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-west" cx="125" cy="195">
+                <circle cx="125" cy="195" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="125" cy="195" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+
+              <g class="map-spot-marker spot-south" cx="170" cy="225">
+                <circle cx="170" cy="225" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="170" cy="225" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-south" cx="140" cy="245">
+                <circle cx="140" cy="245" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="140" cy="245" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-south" cx="155" cy="275">
+                <circle cx="155" cy="275" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="155" cy="275" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-south" cx="180" cy="220">
+                <circle cx="180" cy="220" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="180" cy="220" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-south" cx="120" cy="340">
+                <circle cx="120" cy="340" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="120" cy="340" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-south" cx="148" cy="370">
+                <circle cx="148" cy="370" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="148" cy="370" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+              <g class="map-spot-marker spot-south" cx="135" cy="410">
+                <circle cx="135" cy="410" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="135" cy="410" r="3" fill="var(--primary)" style="filter: url(#glow-green-map-slide);" />
+              </g>
+            </svg>
+          </div>
+
+          <!-- Right Column: Info & KPIs -->
+          <div style="display: flex; flex-direction: column; gap: 15px;">
+            <div>
+              <h3 style="color: #fff; font-size: 1.5rem; font-weight: 800; margin: 0; font-family: var(--heading); line-height: 1.2;">
+                Ubicaciones en Vías Arterias de la <em style="color: var(--primary); font-style: normal;">Capital</em>
+              </h3>
+              <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-top: 8px; margin-bottom: 0;">
+                Ofrecemos acceso directo a <strong>más de 250 espacios comerciales</strong> estratégicamente ubicados en estaciones de servicio y electrolineras aliadas, abarcando las 20 localidades de Bogotá para agilizar tu expansión.
+              </p>
+            </div>
+
+            <!-- Stats grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div class="card" style="padding: 12px 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; height: auto;">
+                <span style="font-size: 0.55rem; color: var(--text-muted); text-transform: uppercase;">Puntos Disponibles</span>
+                <strong style="color: var(--primary); font-size: 1.4rem; font-weight: 800; display: block;">250+</strong>
+              </div>
+              <div class="card" style="padding: 12px 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; height: auto;">
+                <span style="font-size: 0.55rem; color: var(--text-muted); text-transform: uppercase;">Localidades</span>
+                <strong style="color: #fff; font-size: 1.4rem; font-weight: 800; display: block;">20</strong>
+              </div>
+            </div>
+
+            <!-- Advantages list -->
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 0.62rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Ventajas de nuestra red</span>
+              <ul class="bullet-list" style="gap: 6px; font-size: 0.82rem;">
+                <li style="font-size: 0.82rem;"><span class="chk">✓</span><span><strong>Tránsito Alto:</strong> Puntos sobre la Auto Norte, NQS, Calle 26 y Av. Boyacá.</span></li>
+                <li style="font-size: 0.82rem;"><span class="chk">✓</span><span><strong>Geomarketing:</strong> Ubicaciones validadas científicamente por SIKAI Consulting.</span></li>
+                <li style="font-size: 0.82rem;"><span class="chk">✓</span><span><strong>Montaje Express:</strong> Diseños modulares listos en un plazo máximo de 30 días.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>STOP &amp; GO Station — Presentación Corporativa</span>
+        <span>Diapositiva 4 / 11</span>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         SLIDE 5: ALIANZA ESTRATÉGICA CORPORATIVA (SIKAI & CGBI)
+         ======================================================== -->
+    <div class="slide" id="slide-4">
+      <div class="slide-header">
+        <div>
+          <span class="slide-label">Alianza Estratégica Corporativa</span>
+          <h2 class="slide-title">Inteligencia de Datos & <em>Estructuración Inmobiliaria</em></h2>
+        </div>
+        <div class="slide-logo"><img src="/assets/logostop&amp;go.jpeg" alt="Logo"></div>
+      </div>
+      <div class="slide-body">
+        <div class="slide-body-scrollable" style="width: 100%; display: flex; flex-direction: column; gap: 24px; padding-bottom: 20px;">
+          <!-- Intro Paragraph -->
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: 16px; text-align: center;">
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #f0f0f0; margin: 0;">
+              Unimos la ciencia de datos comerciales de <strong>SIKAI Consulting</strong> con el desarrollo inmobiliario técnico de <strong>CGBI</strong>. Ofrecemos a marcas y franquicias ubicaciones validadas científicamente con implementación llave en mano.
+            </p>
+          </div>
+
+          <!-- Vertical stack: SIKAI on top, CGBI on bottom -->
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <!-- SIKAI Section -->
+            <div class="card" style="padding: 24px; border: 1px solid rgba(57,255,20,0.15); background: rgba(57,255,20,0.01); height: auto; justify-content: flex-start; gap: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 4px;">
+                <h3 style="color: var(--primary); font-size: 1.3rem; font-weight: 800; font-family: var(--heading); text-transform: uppercase; margin: 0;">
+                  SIKAI Consulting — Inteligencia de Datos & Geomarketing
+                </h3>
+                <span style="font-size: 0.65rem; background: rgba(57,255,20,0.1); color: var(--primary); border: 1px solid var(--primary); padding: 4px 8px; border-radius: 4px; text-transform: uppercase; font-weight: 800; white-space: nowrap;">VALIDACIÓN CIENTÍFICA</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.95rem; line-height: 1.5;">
+                <p style="margin: 0;">
+                  A través de su <strong>Geomarketing System v4.2</strong>, SIKAI realiza análisis predictivos del tránsito y demografía del entorno comercial de cada estación de servicio:
+                </p>
+                <ul class="bullet-list" style="gap: 10px; margin-left: 10px;">
+                  <li style="font-size: 0.9rem;"><span class="chk">✓</span><span><strong>Análisis de Exposición Visual (IEV):</strong> Cuantificación de tiempos de permanencia vehicular frente a los puntos de venta.</span></li>
+                  <li style="font-size: 0.9rem;"><span class="chk">✓</span><span><strong>Estudios de Tránsito Flotante:</strong> Medición en tiempo real (ej. 42,100 veh/día en Calle 19 con Cra 30).</span></li>
+                  <li style="font-size: 0.9rem;"><span class="chk">✓</span><span><strong>Estación de Viabilidad:</strong> Determinación precisa de tasas de captura y afinidad de marca (Fit comercial hasta 96%).</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- CGBI Section -->
+            <div class="card" style="padding: 24px; border: 1px solid rgba(230,0,0,0.15); background: rgba(230,0,0,0.01); height: auto; justify-content: flex-start; gap: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; margin-bottom: 4px;">
+                <h3 style="color: var(--accent); font-size: 1.3rem; font-weight: 800; font-family: var(--heading); text-transform: uppercase; margin: 0;">
+                  CGBI — Estructuración & Desarrollo Inmobiliario Técnico
+                </h3>
+                <span style="font-size: 0.65rem; background: rgba(230,0,0,0.1); color: var(--accent); border: 1px solid var(--accent); padding: 4px 8px; border-radius: 4px; text-transform: uppercase; font-weight: 800; white-space: nowrap;">IMPLEMENTACIÓN TÉCNICA</span>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <p style="font-size: 0.95rem; line-height: 1.5; margin: 0;">
+                  CGBI elimina el riesgo constructivo y operativo mediante la habilitación física de los espacios modulares:
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;">
+                  <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 15px; border-radius: 12px;">
+                    <h5 style="color: #fff; font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; font-family: var(--heading);">Soluciones a la Medida</h5>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Diseño y construcción de locales comerciales a la medida del corredor de movilidad y la marca.</p>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 15px; border-radius: 12px;">
+                    <h5 style="color: #fff; font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; font-family: var(--heading);">Potencial Comercial</h5>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Evaluación y habilitación de requerimientos operativos, eléctricos e hidrosanitarios.</p>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 15px; border-radius: 12px;">
+                    <h5 style="color: #fff; font-size: 0.9rem; font-weight: 800; margin-bottom: 6px; text-transform: uppercase; font-family: var(--heading);">Acompañamiento Total</h5>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin: 0;">Desde la selección del punto de servicio hasta la entrega final operativa en 30 días.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Integrated Process Flow -->
+            <div style="background: rgba(57,255,20,0.02); border: 1px solid rgba(57,255,20,0.1); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+              <span style="font-size: 0.75rem; color: var(--primary); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; text-align: center;">Proceso Integrado de Expansión (SIKAI + CGBI)</span>
+              <div style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 0 5%;">
+                <div style="position: absolute; top: 12px; left: 10%; right: 10%; height: 2px; background: rgba(255,255,255,0.06); z-index: 1;">
+                  <div style="width: 75%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; align-items: center; z-index: 2; width: 22%;">
+                  <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid var(--primary); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; box-shadow: 0 0 10px var(--primary-glow);">1</div>
+                  <span style="font-size: 0.75rem; color: #fff; text-align: center; margin-top: 6px; font-weight: 700;">Datos y Tráfico (SIKAI)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; z-index: 2; width: 22%;">
+                  <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid var(--primary); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; box-shadow: 0 0 10px var(--primary-glow);">2</div>
+                  <span style="font-size: 0.75rem; color: #fff; text-align: center; margin-top: 6px; font-weight: 700;">Estudio de Viabilidad</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; z-index: 2; width: 22%;">
+                  <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; box-shadow: 0 0 10px var(--accent-glow);">3</div>
+                  <span style="font-size: 0.75rem; color: #fff; text-align: center; margin-top: 6px; font-weight: 700;">Diseño a Medida (CGBI)</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; z-index: 2; width: 22%;">
+                  <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--bg); border: 2px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">4</div>
+                  <span style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 6px; font-weight: 600;">Montaje Express (30D)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>STOP &amp; GO Station — Presentación Corporativa</span>
+        <span>Diapositiva 5 / 11</span>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         SLIDE 6: PORTAFOLIO DE MÓDULOS
+         ======================================================== -->
+    <div class="slide" id="slide-5">
       <div class="slide-header">
         <div>
           <span class="slide-label">Formatos Estandarizados</span>
@@ -1089,14 +1409,94 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 4 / 8</span>
+        <span>Diapositiva 6 / 11</span>
       </div>
     </div>
 
     <!-- ========================================================
-         SLIDE 5: CASOS DE USO / MARCAS ALIADAS
+         SLIDE 6: FORMATOS COMERCIALES DE NEGOCIO
          ======================================================== -->
-    <div class="slide" id="slide-4">
+    <div class="slide" id="slide-6">
+      <div class="slide-header">
+        <div>
+          <span class="slide-label">Catálogo de Opciones</span>
+          <h2 class="slide-title">Formatos de <em>Uso Comercial</em></h2>
+        </div>
+        <div class="slide-logo"><img src="/assets/logostop&amp;go.jpeg" alt="Logo"></div>
+      </div>
+      <div class="slide-body">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; height: 100%; align-content: center;">
+          <!-- Card 1: Café Express -->
+          <div class="card" style="padding: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: row; gap: 12px; align-items: center; height: auto;">
+            <img src="/assets/cafe express.jpeg" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="Café Express">
+            <div>
+              <span style="font-size: 0.55rem; color: var(--primary); text-transform: uppercase; font-weight: 800;">Compact (25 m²)</span>
+              <h4 style="color: #fff; font-size: 0.9rem; margin: 1px 0; font-family: var(--heading);">Café Express</h4>
+              <p style="font-size: 0.7rem; color: var(--text-muted); line-height: 1.25;">Desayunos, repostería y café caliente al paso.</p>
+            </div>
+          </div>
+          
+          <!-- Card 2: Droguería & Salud -->
+          <div class="card" style="padding: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: row; gap: 12px; align-items: center; height: auto;">
+            <img src="/assets/drogueria.jpeg" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="Droguería">
+            <div>
+              <span style="font-size: 0.55rem; color: var(--primary); text-transform: uppercase; font-weight: 800;">Standard (50 m²)</span>
+              <h4 style="color: #fff; font-size: 0.9rem; margin: 1px 0; font-family: var(--heading);">Droguería & Salud</h4>
+              <p style="font-size: 0.7rem; color: var(--text-muted); line-height: 1.25;">Medicamentos y venta de conveniencia activa 24/7.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Comidas Rápidas -->
+          <div class="card" style="padding: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: row; gap: 12px; align-items: center; height: auto;">
+            <img src="/assets/comidas rapidas.jpeg" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="QSR">
+            <div>
+              <span style="font-size: 0.55rem; color: var(--primary); text-transform: uppercase; font-weight: 800;">Premium (75 m²)</span>
+              <h4 style="color: #fff; font-size: 0.9rem; margin: 1px 0; font-family: var(--heading);">Comidas Rápidas</h4>
+              <p style="font-size: 0.7rem; color: var(--text-muted); line-height: 1.25;">Formatos de comida rápida con cocina integrada.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Barbería Express -->
+          <div class="card" style="padding: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: row; gap: 12px; align-items: center; height: auto;">
+            <img src="/assets/barberia.jpeg" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="Barbería">
+            <div>
+              <span style="font-size: 0.55rem; color: var(--primary); text-transform: uppercase; font-weight: 800;">Standard (50 m²)</span>
+              <h4 style="color: #fff; font-size: 0.9rem; margin: 1px 0; font-family: var(--heading);">Barbería Express</h4>
+              <p style="font-size: 0.7rem; color: var(--text-muted); line-height: 1.25;">Servicio de peluquería express para conductores.</p>
+            </div>
+          </div>
+
+          <!-- Card 5: Tienda para Mascotas -->
+          <div class="card" style="padding: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: row; gap: 12px; align-items: center; height: auto;">
+            <img src="/assets/tienda para mascotas.jpeg" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="Mascotas">
+            <div>
+              <span style="font-size: 0.55rem; color: var(--primary); text-transform: uppercase; font-weight: 800;">Compact (25 m²)</span>
+              <h4 style="color: #fff; font-size: 0.9rem; margin: 1px 0; font-family: var(--heading);">Tienda de Mascotas</h4>
+              <p style="font-size: 0.7rem; color: var(--text-muted); line-height: 1.25;">Venta rápida de alimentos y accesorios de paso.</p>
+            </div>
+          </div>
+
+          <!-- Card 6: Floristería Boutique -->
+          <div class="card" style="padding: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: row; gap: 12px; align-items: center; height: auto;">
+            <img src="/assets/floristeria.jpeg" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0;" alt="Flores">
+            <div>
+              <span style="font-size: 0.55rem; color: var(--primary); text-transform: uppercase; font-weight: 800;">Compact (25 m²)</span>
+              <h4 style="color: #fff; font-size: 0.9rem; margin: 1px 0; font-family: var(--heading);">Floristería Boutique</h4>
+              <p style="font-size: 0.7rem; color: var(--text-muted); line-height: 1.25;">Venta de flores e impulso de camino a casa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>STOP &amp; GO Station — Presentación Corporativa</span>
+        <span>Diapositiva 7 / 11</span>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         SLIDE 7: CASOS DE USO / MARCAS ALIADAS
+         ======================================================== -->
+    <div class="slide" id="slide-7">
       <div class="slide-header">
         <div>
           <span class="slide-label">Marcas Integradas</span>
@@ -1138,14 +1538,14 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 5 / 8</span>
+        <span>Diapositiva 8 / 11</span>
       </div>
     </div>
 
     <!-- ========================================================
-         SLIDE 6: SOBRE NOSOTROS
+         SLIDE 8: SOBRE NOSOTROS
          ======================================================== -->
-    <div class="slide" id="slide-5">
+    <div class="slide" id="slide-8">
       <div class="slide-header">
         <div>
           <span class="slide-label">Quiénes Somos</span>
@@ -1187,14 +1587,14 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 6 / 8</span>
+        <span>Diapositiva 9 / 11</span>
       </div>
     </div>
 
     <!-- ========================================================
-         SLIDE 7: METODOLOGÍA
+         SLIDE 9: METODOLOGÍA
          ======================================================== -->
-    <div class="slide" id="slide-6">
+    <div class="slide" id="slide-9">
       <div class="slide-header">
         <div>
           <span class="slide-label">Nuestro Proceso</span>
@@ -1233,14 +1633,14 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 7 / 8</span>
+        <span>Diapositiva 10 / 11</span>
       </div>
     </div>
 
     <!-- ========================================================
-         SLIDE 8: RESPALDO Y ALIADOS
+         SLIDE 10: RESPALDO Y ALIADOS
          ======================================================== -->
-    <div class="slide" id="slide-7">
+    <div class="slide" id="slide-10">
       <div class="slide-header">
         <div>
           <span class="slide-label">El Respaldo</span>
@@ -1269,7 +1669,7 @@
       </div>
       <div class="slide-footer">
         <span>STOP &amp; GO Station — Presentación Corporativa</span>
-        <span>Diapositiva 8 / 8</span>
+        <span>Diapositiva 11 / 11</span>
       </div>
     </div>
 
