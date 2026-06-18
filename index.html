@@ -128,6 +128,217 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== MAPA DE COBERTURA BOGOTÁ ===== -->
+  <section id="cobertura-bogota" class="section section-darker" style="border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+    <div class="wrap">
+      <div class="centered" data-aos="fade-up">
+        <p class="section-label" style="color: var(--primary);">Red de Cobertura Metropolitana</p>
+        <h2 class="section-title">Disponibilidad de +250 Puntos en <em>Bogotá</em></h2>
+        <p class="section-desc">Nuestra red de ubicaciones estratégicas en estaciones de servicio cubre las principales vías arterias de la capital. Puntos de alta afluencia validados con geomarketing y listos para tu marca.</p>
+      </div>
+
+      <div class="grid-2col" style="align-items: center; gap: 40px; margin-top: 48px;">
+        <!-- Left Column: Bogotá Interactive SVG Map -->
+        <div class="map-bogota-wrap" data-aos="fade-right" style="position: relative; background: #070709; border: 1px solid rgba(57,255,20,0.1); border-radius: 24px; padding: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);">
+          <!-- Map HUD Header -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
+            <span style="font-size: 0.65rem; color: var(--primary); font-family: monospace; font-weight: 800; letter-spacing: 1px;">SISTEMA DE COBERTURA STOP & GO v1.0</span>
+            <span id="activeZoneName" style="background: rgba(57,255,20,0.1); border: 1px solid var(--primary); color: var(--primary); font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">ZONA: TODAS</span>
+          </div>
+
+          <!-- The SVG Map -->
+          <div style="position: relative; height: 400px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+            <svg id="svgBogotaMap" width="100%" height="100%" viewBox="0 0 400 500" style="background: transparent;">
+              <defs>
+                <filter id="glow-green-map" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              
+              <!-- Bogotá Background Outer Outline -->
+              <path d="M 170 30 C 220 35, 250 50, 260 70 C 270 90, 290 120, 290 150 C 290 180, 275 220, 265 240 C 255 260, 250 290, 240 330 C 230 370, 220 410, 210 440 C 200 470, 180 490, 160 490 C 140 490, 120 470, 110 440 C 100 410, 95 360, 95 320 C 95 280, 80 240, 95 200 C 110 160, 115 130, 115 100 C 115 70, 130 40, 170 30 Z" fill="#0f0f14" stroke="#1f2029" stroke-width="2" style="transition: fill 0.3s ease;" />
+              
+              <!-- Bogotá Localities Polygons / Sectors -->
+              <path class="locality-sector sec-north" d="M 170 30 Q 230 35 260 70 L 280 130 L 195 140 L 120 100 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <path class="locality-sector sec-center" d="M 195 140 L 280 130 Q 285 170 270 210 L 190 200 L 175 160 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <path class="locality-sector sec-west" d="M 120 100 L 195 140 L 175 160 L 190 200 L 135 220 L 105 180 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <path class="locality-sector sec-south" d="M 135 220 L 190 200 Q 255 250 240 330 L 180 460 Q 130 460 110 420 L 95 320 Z" fill="rgba(255,255,255,0.01)" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              
+              <!-- Neon Road Network -->
+              <path d="M 200 45 L 205 130 Q 195 180 190 240 L 165 360 L 155 450" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="2,4" />
+              <path d="M 275 170 Q 200 165 145 160 L 115 155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="2,4" />
+              <path d="M 150 50 Q 155 120 145 200 L 135 300 Q 125 380 140 460" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+              <path d="M 220 90 L 125 85" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+              <path d="M 250 220 L 125 210" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.2" />
+
+              <!-- MAP MARKERS -->
+              <g class="map-spot-marker spot-north" data-locality="Usaquén (Calle 134)" cx="215" cy="80">
+                <circle cx="215" cy="80" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="215" cy="80" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-north" data-locality="Suba (Av. Ciudad de Cali)" cx="165" cy="70">
+                <circle cx="165" cy="70" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="165" cy="70" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-north" data-locality="Suba (Av. Boyacá)" cx="180" cy="95">
+                <circle cx="180" cy="95" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="180" cy="95" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-north" data-locality="Usaquén (Auto Norte x Cl 170)" cx="220" cy="55">
+                <circle cx="220" cy="55" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="220" cy="55" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-north" data-locality="Usaquén (Av. Novena)" cx="235" cy="90">
+                <circle cx="235" cy="90" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="235" cy="90" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+
+              <g class="map-spot-marker spot-center" data-locality="Chapinero (Calle 72)" cx="230" cy="145">
+                <circle cx="230" cy="145" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="230" cy="145" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-center" data-locality="Teusaquillo (Calle 53)" cx="205" cy="170">
+                <circle cx="205" cy="170" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="205" cy="170" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-center" data-locality="Barrios Unidos (Calle 63)" cx="185" cy="135">
+                <circle cx="185" cy="135" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="185" cy="135" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-center" data-locality="Teusaquillo (NQS x Cl 19 - STOP GO)" cx="195" cy="190">
+                <circle cx="195" cy="190" r="15" fill="rgba(57,255,20,0.25)" class="spot-pulse-anim" />
+                <circle cx="195" cy="190" r="5" fill="#fff" stroke="var(--primary)" stroke-width="2" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-center" data-locality="Chapinero (Av. Caracas x Cl 45)" cx="220" cy="180">
+                <circle cx="220" cy="180" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="220" cy="180" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+
+              <g class="map-spot-marker spot-west" data-locality="Engativá (Av. Cl 80)" cx="140" cy="105">
+                <circle cx="140" cy="105" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="140" cy="105" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-west" data-locality="Engativá (Av. Mutis)" cx="145" cy="130">
+                <circle cx="145" cy="130" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="145" cy="130" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-west" data-locality="Fontibón (Av. El Dorado)" cx="150" cy="155">
+                <circle cx="150" cy="155" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="150" cy="155" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-west" data-locality="Fontibón (Av. Centenario)" cx="130" cy="180">
+                <circle cx="130" cy="180" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="130" cy="180" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-west" data-locality="Fontibón (Av. Ciudad de Cali)" cx="125" cy="195">
+                <circle cx="125" cy="195" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="125" cy="195" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+
+              <g class="map-spot-marker spot-south" data-locality="Puente Aranda (Av. Américas)" cx="170" cy="225">
+                <circle cx="170" cy="225" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="170" cy="225" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-south" data-locality="Kennedy (Av. Boyacá x Cl 3)" cx="140" cy="245">
+                <circle cx="140" cy="245" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="140" cy="245" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-south" data-locality="Kennedy (Av. Primera de Mayo)" cx="155" cy="275">
+                <circle cx="155" cy="275" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="155" cy="275" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-south" data-locality="Puente Aranda (Calle 13)" cx="180" cy="220">
+                <circle cx="180" cy="220" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="180" cy="220" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-south" data-locality="Bosa (Autopista Sur)" cx="120" cy="340">
+                <circle cx="120" cy="340" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="120" cy="340" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-south" data-locality="Tunjuelito (Av. Boyacá)" cx="148" cy="370">
+                <circle cx="148" cy="370" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="148" cy="370" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+              <g class="map-spot-marker spot-south" data-locality="Ciudad Bolívar (Av. Villavicencio)" cx="135" cy="410">
+                <circle cx="135" cy="410" r="10" fill="rgba(57,255,20,0.12)" class="spot-pulse-anim" />
+                <circle cx="135" cy="410" r="3" fill="var(--primary)" style="filter: url(#glow-green-map);" />
+              </g>
+            </svg>
+            
+            <!-- Map Floating Tooltip -->
+            <div id="bogotaMapTooltip" style="position: absolute; background: rgba(12,12,15,0.9); border: 1px solid var(--primary); padding: 6px 12px; border-radius: 6px; font-size: 0.65rem; color: #fff; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; z-index: 10; font-family: monospace;">
+              Ubicación STOP & GO
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Control Panel & statistics -->
+        <div class="map-bogota-controls" data-aos="fade-left" style="display: flex; flex-direction: column; gap: 24px;">
+          <div>
+            <p class="section-label" style="color: var(--accent); margin: 0 0 6px 0;">Red de Cobertura Activa</p>
+            <h3 style="color: #fff; font-size: 1.8rem; font-weight: 800; margin: 0; font-family: var(--heading); line-height: 1.2;">
+              Ubicaciones Estratégicas a lo largo de toda la <em style="color: var(--primary); font-style: normal;">Ciudad</em>
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-top: 12px; margin-bottom: 0;">
+              No tienes que buscar lote por lote ni negociar contrato por contrato. Contamos con **más de 250 espacios disponibles** en estaciones de servicio y electrolineras aliadas, cubriendo todos los cuadrantes clave de Bogotá para asegurar tu rápida expansión.
+            </p>
+          </div>
+
+          <!-- Coverage stats grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="card" style="padding: 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px;">
+              <span style="font-size: 0.58rem; color: var(--text-muted); text-transform: uppercase; display: block; letter-spacing: 0.5px; margin-bottom: 4px;">Puntos Disponibles</span>
+              <strong style="color: var(--primary); font-size: 1.5rem; font-weight: 800; display: block; line-height: 1;">250+</strong>
+              <span style="font-size: 0.65rem; color: #888; display: block; margin-top: 4px;">Bogotá y Sabana</span>
+            </div>
+            <div class="card" style="padding: 16px; background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px;">
+              <span style="font-size: 0.58rem; color: var(--text-muted); text-transform: uppercase; display: block; letter-spacing: 0.5px; margin-bottom: 4px;">Localidades Cubiertas</span>
+              <strong style="color: #fff; font-size: 1.5rem; font-weight: 800; display: block; line-height: 1;">20</strong>
+              <span style="font-size: 0.65rem; color: #888; display: block; margin-top: 4px;">100% cobertura urbana</span>
+            </div>
+          </div>
+
+          <!-- Zone Selector Buttons -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px;">Filtrar por Zona Comercial</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <button class="btn-zone-filter active" onclick="filterBogotaZone('all')">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: #fff; display: inline-block; margin-right: 6px;"></span>
+                Todas las Zonas
+              </button>
+              <button class="btn-zone-filter" onclick="filterBogotaZone('north')">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
+                Norte (64 puntos)
+              </button>
+              <button class="btn-zone-filter" onclick="filterBogotaZone('center')">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
+                Centro-Oriente (58 puntos)
+              </button>
+              <button class="btn-zone-filter" onclick="filterBogotaZone('west')">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
+                Occidente (49 puntos)
+              </button>
+              <button class="btn-zone-filter" onclick="filterBogotaZone('south')">
+                <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary); display: inline-block; margin-right: 6px;"></span>
+                Sur (79 puntos)
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Zone Details Card -->
+          <div id="zoneDetailsCard" class="card" style="padding: 18px; background: rgba(57,255,20,0.02); border: 1px dashed rgba(57,255,20,0.15); border-radius: 16px; min-height: 90px; display: flex; flex-direction: column; justify-content: center; gap: 4px; transition: all 0.3s ease;">
+            <strong id="zoneDetailsTitle" style="color: var(--primary); font-size: 0.8rem; text-transform: uppercase; font-family: var(--heading); letter-spacing: 0.5px;">Cobertura Consolidada en Bogotá</strong>
+            <p id="zoneDetailsDesc" style="font-size: 0.76rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.4;">
+              Haz clic en cualquiera de las zonas para detallar la concentración de estaciones disponibles y el flujo de tráfico promedio validado por SIKAI Consulting.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== ALIANZA ESTRATÉGICA: SIKAI & CGBI ===== -->
   <section class="section section-darker" id="alianza-estrategica">
     <div class="wrap">
@@ -661,7 +872,291 @@
     </div>
   </section>
 
+  <!-- ===== FORMATOS COMERCIALES DE NEGOCIO ===== -->
+  <section id="formatos-negocio" class="section" style="border-bottom: 1px solid rgba(255,255,255,0.05); background: #070709;">
+    <div class="wrap">
+      <div class="centered" data-aos="fade-up">
+        <p class="section-label" style="color: var(--accent);">Categorías y Nichos Comerciales</p>
+        <h2 class="section-title">¿Qué puedes montar en un punto <em>STOP & GO</em>?</h2>
+        <p class="section-desc">Estructuras modulares con diseño glassmorphic de alto impacto estético, adaptables a cualquier tipo de negocio. Diseños aprobados para un montaje exprés en 30 días.</p>
+        
+        <!-- Category Filters -->
+        <div class="formatos-filters" style="display: flex; justify-content: center; gap: 10px; margin-top: 28px; flex-wrap: wrap;">
+          <button class="filter-format-btn active" onclick="filterFormats('all')">Todos los Formatos</button>
+          <button class="filter-format-btn" onclick="filterFormats('alimentos')">Alimentos & Bebidas</button>
+          <button class="filter-format-btn" onclick="filterFormats('conveniencia')">Conveniencia & Retail</button>
+          <button class="filter-format-btn" onclick="filterFormats('salud')">Salud, Belleza & Servicios</button>
+        </div>
+      </div>
+
+      <div class="formatos-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 40px;" data-aos="fade-up" data-aos-delay="100">
+        
+        <!-- 1. Café Express -->
+        <div class="form-card-item cat-alimentos" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/cafe express.jpeg" alt="Café Express" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (15-25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Café Express</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Cafetería exprés y repostería gourmet de paso rápido. Ideal para capturar el tráfico matutino y pendular con tickets ágiles.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Matutino Alto</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 96%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Droguería -->
+        <div class="form-card-item cat-salud" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/drogueria.jpeg" alt="Droguería & Farmacia" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Standard (50m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Droguería & Farmacia</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Venta de medicamentos y conveniencia express. Aprovecha el flujo vehicular 24/7 y la facilidad de parqueo de paso rápido.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>24 Horas / Continuo</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 94%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Comidas Rápidas -->
+        <div class="form-card-item cat-alimentos" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/comidas rapidas.jpeg" alt="Comidas Rápidas" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Premium (75m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Comidas Rápidas & QSR</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Hamburguesas, pizzas, pollo o sándwiches en formato express con área de terraza exterior para aumentar la permanencia.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Tardes & Fines de Semana</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 95%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Tienda para Mascotas -->
+        <div class="form-card-item cat-conveniencia" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/tienda para mascotas.jpeg" alt="Pet Shop Express" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Pet Shop Express</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Venta rápida de alimentos, snacks y juguetes para mascotas en la ruta de regreso a casa de los conductores.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Retorno / Vespertino</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 88%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Barbería -->
+        <div class="form-card-item cat-salud" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/barberia.jpeg" alt="Barbería" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Standard (50m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Barbería & Peluquería</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Servicio ágil de estilismo masculino y cortes rápidos. Ideal para conductores o vecinos que valoran el parqueo gratuito y la agilidad.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Fines de Semana Alto</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 86%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Tecnología -->
+        <div class="form-card-item cat-conveniencia" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/tecnologia.jpeg" alt="Tecnología" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (15-25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Tech & Accesorios</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Venta de cargadores, cables, audífonos y accesorios electrónicos de paso rápido en la vía para conductores y viajeros.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Viajeros / Paso</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 89%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Helados y Postres -->
+        <div class="form-card-item cat-alimentos" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/helados y postres.jpeg" alt="Helados y Postres" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (15-25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Helados & Postres</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Kiosco de postres, copas de helado y café helado. Formato de compra por impulso y antojos en horarios de la tarde.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Tardes / Recreativo</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 92%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Floristería -->
+        <div class="form-card-item cat-conveniencia" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/floristeria.jpeg" alt="Floristería" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (15-25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Floristería Boutique</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Arreglos florales y regalos express. Captura las compras espontáneas en el trayecto de regreso y en fechas conmemorativas.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Fines de Semana / Fechas</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 84%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Productos Estéticos -->
+        <div class="form-card-item cat-salud" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/productos esteticos.jpeg" alt="Productos Estéticos" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Estética & Cuidado</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Maquillaje, cuidado de la piel y cosméticos express. Ideal para captar el público de paso rápido sin demoras.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Vespertino / Alto</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 85%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Miscelánea -->
+        <div class="form-card-item cat-conveniencia" style="position: relative; border-radius: 20px; overflow: hidden; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s var(--ease); display: flex; flex-direction: column; min-height: 360px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="/assets/miscelanea.jpeg" alt="Miscelánea" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" class="form-card-img" />
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(57,255,20,0.15); border: 1px solid var(--primary); color: var(--primary); font-size: 0.58rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; text-transform: uppercase;">Módulo Compact (15-25m²)</span>
+          </div>
+          <div style="padding: 20px; display: flex; flex-direction: column; flex: 1; justify-content: space-between; gap: 12px;">
+            <div>
+              <h4 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 6px 0; font-family: var(--heading);">Miscelánea & Útiles</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; margin: 0;">Papelería, fotocopias, regalos y útiles rápidos. Ideal para sinergia con juzgados y zonas institucionales aliadas.</p>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #888;">
+              <span>Tránsito: <strong>Horario de Oficina</strong></span>
+              <span style="color: var(--primary); font-weight: 700;">Fit: 91%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <script>
+    // Cobertura Bogotá Interactive Map functions
+    const zoneDetails = {
+      'all': {
+        title: 'Cobertura Consolidada en Bogotá',
+        desc: 'Nuestra red cubre 20 localidades de Bogotá con +250 ubicaciones disponibles en estaciones de servicio y corredores viales principales. Todas validadas con geomarketing por SIKAI Consulting.'
+      },
+      'north': {
+        title: 'Zona Norte (Usaquén, Suba)',
+        desc: '64 ubicaciones disponibles. Zonas de alta densidad residencial (estratos 4, 5 y 6) con flujo vehicular premium. Autopista Norte, Av. Boyacá y Calle 170. Ideal para droguerías, QSR y tiendas gourmet.'
+      },
+      'center': {
+        title: 'Zona Centro-Oriente (Chapinero, Teusaquillo, B. Unidos)',
+        desc: '58 ubicaciones disponibles. Entorno corporativo, estudiantil e institucional de altísimo flujo peatonal y vehicular diario. Carrera 30, Calle 72 y Calle 26. Ideal para cafeterías premium, cajeros y copiado.'
+      },
+      'west': {
+        title: 'Zona Occidente (Engativá, Fontibón)',
+        desc: '49 ubicaciones disponibles. Conectividad directa con el Aeropuerto El Dorado y zonas industriales de alto flujo de carga y logística. Av. El Dorado, Av. Ciudad de Cali. Ideal para comidas rápidas y tiendas de mascotas.'
+      },
+      'south': {
+        title: 'Zona Sur (Puente Aranda, Kennedy, Bosa, Ciudad Bolívar)',
+        desc: '79 ubicaciones disponibles. Zonas industriales y comerciales populares de altísima densidad comercial e industrial. Autopista Sur, Av. Villavicencio. Ideal para QSR de alta frecuencia y droguerías 24h.'
+      }
+    };
+
+    window.filterBogotaZone = function(zoneId) {
+      document.querySelectorAll('.btn-zone-filter').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+
+      const details = zoneDetails[zoneId];
+      if (details) {
+        document.getElementById('zoneDetailsTitle').innerText = details.title;
+        document.getElementById('zoneDetailsDesc').innerText = details.desc;
+        document.getElementById('activeZoneName').innerText = `ZONA: ${zoneId === 'all' ? 'TODAS' : zoneId.toUpperCase()}`;
+      }
+
+      const spots = document.querySelectorAll('.map-spot-marker');
+      spots.forEach(spot => {
+        const pulse = spot.querySelector('.spot-pulse-anim');
+        if (zoneId === 'all') {
+          spot.style.opacity = '1';
+          if (pulse) pulse.setAttribute('fill', 'rgba(57,255,20,0.12)');
+        } else {
+          if (spot.classList.contains('spot-' + zoneId)) {
+            spot.style.opacity = '1';
+            if (pulse) pulse.setAttribute('fill', 'rgba(57,255,20,0.35)');
+            spot.style.transform = 'scale(1.2)';
+            setTimeout(() => { spot.style.transform = 'scale(1)'; }, 300);
+          } else {
+            spot.style.opacity = '0.15';
+            if (pulse) pulse.setAttribute('fill', 'rgba(255,255,255,0.02)');
+          }
+        }
+      });
+    };
+
+    // Formatos de Negocio Category Filtering function
+    window.filterFormats = function(catId) {
+      document.querySelectorAll('.filter-format-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+
+      document.querySelectorAll('.form-card-item').forEach(card => {
+        if (catId === 'all') {
+          card.style.display = 'flex';
+          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 50);
+        } else {
+          if (card.classList.contains('cat-' + catId)) {
+            card.style.display = 'flex';
+            setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 50);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => { card.style.display = 'none'; }, 300);
+          }
+        }
+      });
+    };
+
     // Landmark Node Database for SIKAI Geomarketing case study (Fully Expanded)
     const nodeData = {
       'stop-go': {
@@ -977,14 +1472,45 @@
     // Initial load setup for default node
     document.addEventListener("DOMContentLoaded", function() {
       selectMapNode('stop-go');
+      
+      // Initialize Bogotá Map Tooltips & events
+      document.querySelectorAll('.map-spot-marker').forEach(spot => {
+        spot.style.transition = 'all 0.3s ease';
+        spot.style.transformOrigin = 'center';
+        spot.style.cursor = 'pointer';
+        
+        spot.addEventListener('mouseenter', (e) => {
+          const locality = spot.getAttribute('data-locality');
+          const tooltip = document.getElementById('bogotaMapTooltip');
+          tooltip.innerText = locality;
+          tooltip.style.opacity = '1';
+          
+          const containerRect = document.getElementById('svgBogotaMap').getBoundingClientRect();
+          // Find either center elements or first circle
+          const circle = spot.querySelector('circle:nth-child(2)') || spot.querySelector('circle');
+          const spotX = parseFloat(spot.getAttribute('cx') || circle.getAttribute('cx'));
+          const spotY = parseFloat(spot.getAttribute('cy') || circle.getAttribute('cy'));
+          
+          const svgW = 400;
+          const svgH = 500;
+          const scaleX = containerRect.width / svgW;
+          const scaleY = containerRect.height / svgH;
+          
+          tooltip.style.left = (spotX * scaleX) + 'px';
+          tooltip.style.top = (spotY * scaleY - 35) + 'px';
+        });
+        
+        spot.addEventListener('mouseleave', () => {
+          document.getElementById('bogotaMapTooltip').style.opacity = '0';
+        });
+
+        spot.addEventListener('click', () => {
+          // Visual feedback on click
+          spot.style.transform = 'scale(1.4)';
+          setTimeout(() => { spot.style.transform = 'scale(1)'; }, 200);
+        });
+      });
     });
-  </script> btns.forEach((btn, i) => {
-        btn.classList.toggle('active', i === idx);
-      });
-      panes.forEach((pane, i) => {
-        pane.classList.toggle('active', i === idx);
-      });
-    }
   </script>
 
   <!-- ===== MODELO DE NEGOCIO ===== -->
