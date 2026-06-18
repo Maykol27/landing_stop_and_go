@@ -508,6 +508,118 @@ header.scrolled {
 .valor-card h3 { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
 .valor-card p { font-size: 0.92rem; color: var(--text-muted); }
 
+/* ========== CANALES DE EXPANSIÓN (INNOVADORES) ========== */
+.canales-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.canal-card {
+  position: relative;
+  height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0c0c0e;
+  cursor: pointer;
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease), border-color 0.6s var(--ease);
+}
+.canal-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.canal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.15) 100%);
+  transition: background 0.6s var(--ease);
+}
+.canal-icon {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 5;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(15, 15, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.5s var(--ease), background 0.5s var(--ease), color 0.5s var(--ease), border-color 0.5s var(--ease);
+}
+.canal-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 24px;
+  z-index: 4;
+}
+.canal-tag {
+  display: inline-block;
+  background: rgba(57, 255, 20, 0.1);
+  border: 1px solid rgba(57, 255, 20, 0.25);
+  color: var(--primary);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+  transition: background 0.5s var(--ease), border-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+.canal-card h3 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--heading);
+}
+.canal-desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s var(--ease), margin-top 0.6s var(--ease);
+}
+.canal-card:hover {
+  transform: translateY(-12px);
+  border-color: var(--border-green);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px var(--primary-glow);
+}
+.canal-card:hover .canal-bg {
+  transform: scale(1.12);
+}
+.canal-card:hover .canal-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(57, 255, 20, 0.08) 100%);
+}
+.canal-card:hover .canal-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  box-shadow: 0 0 25px var(--primary-glow);
+}
+.canal-card:hover .canal-tag {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.canal-card:hover .canal-desc {
+  max-height: 100px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
 /* ========== WHO WE ARE  ========== */
 .quienes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .quienes-img {
@@ -608,7 +720,7 @@ footer {
   .linea-card { height: 320px; }
   .metodo-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
   .metodo-grid::before { display: none; }
-  .valores-grid { grid-template-columns: repeat(2, 1fr); }
+  .valores-grid, .canales-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
@@ -628,7 +740,8 @@ footer {
   .hero-stats { gap: 32px; }
   .hero-stat h3 { font-size: 1.8rem; }
   .lineas-grid { grid-template-columns: 1fr; }
-  .portfolio-grid, .aliados-grid, .valores-grid, .dif-items { grid-template-columns: 1fr; }
+  .portfolio-grid, .aliados-grid, .valores-grid, .canales-grid, .dif-items { grid-template-columns: 1fr; }
+  .canal-card { height: 340px; }
   .metodo-grid { grid-template-columns: 1fr; }
   .roi-bar { grid-template-columns: repeat(2, 1fr); }
   .gallery-masonry { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
