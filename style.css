@@ -15,6 +15,11 @@
   --border-green: rgba(57, 255, 20, 0.3);
   --text: #f0f0f0;
   --text-muted: #888;
+  --text-primary: var(--primary);
+  --text-accent: var(--accent);
+  --text-inverse: #070709;
+  --bg-overlay: rgba(7, 7, 9, 0.75);
+  --card-shadow: rgba(0, 0, 0, 0.5);
   --font: 'Inter', sans-serif;
   --heading: 'Outfit', sans-serif;
   --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -27,7 +32,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
-  background-color: var(--bg);
+  background-color: transparent; /* Move background to html to allow inversion of canvas */
   color: var(--text);
   overflow-x: hidden;
   line-height: 1.65;
@@ -62,7 +67,7 @@ header.scrolled {
   display: flex; align-items: center; justify-content: space-between;
   width: 92%; max-width: 1280px; margin: 0 auto;
 }
-.nav-logo img { height: 48px; object-fit: contain; }
+.nav-logo img { height: 72px; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-links a {
   font-family: var(--heading); font-weight: 700; font-size: 0.82rem;
@@ -88,7 +93,7 @@ header.scrolled {
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background: url('/assets/fondohero.jpeg') center/cover no-repeat;
+  background: url('/assets/stop_go_hero.png') center/cover no-repeat;
   transform: scale(1.08);
   animation: hero-zoom 20s ease-in-out infinite alternate;
 }
@@ -106,8 +111,13 @@ header.scrolled {
   background: radial-gradient(ellipse at 70% 50%, rgba(57,255,20,0.08) 0%, transparent 60%);
   animation: glow-pulse 8s ease-in-out infinite alternate;
 }
+.hero-wrapper {
+  position: relative; z-index: 3; width: 100%; max-width: 1500px;
+  display: flex; align-items: flex-end; justify-content: center; flex-wrap: wrap; gap: 40px;
+  padding: 0 20px;
+}
 .hero-content {
-  position: relative; z-index: 3; padding: 0 24px; max-width: 960px;
+  position: relative; z-index: 3; max-width: 850px;
   display: flex; flex-direction: column; align-items: center;
 }
 .hero-badge {
@@ -128,7 +138,7 @@ header.scrolled {
   font-size: clamp(0.9rem, 1.6vw, 1.1rem); color: rgba(255,255,255,0.7);
   max-width: 620px; margin: 0 auto 28px; font-weight: 300; line-height: 1.65;
 }
-.hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 0; }
 .hero-stats {
   position: relative; z-index: 3;
   display: flex; gap: 0; align-items: stretch;
@@ -728,12 +738,22 @@ footer {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(57, 255, 20, 0.05);
 }
 .sikai-dashboard {
+  background: #0c0c0f;
+  border: 1px solid rgba(57,255,20,0.15);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
   transition: transform 0.5s var(--ease), border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 .sikai-dashboard:hover {
   border-color: var(--primary) !important;
   transform: translateY(-8px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--primary-glow) !important;
+}
+.sikai-dashboard-grid {
+  background: rgba(12,12,15,0.95);
+  border: 1px solid rgba(57,255,20,0.15);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
 }
 
 .grid-2col {
@@ -1131,6 +1151,26 @@ footer {
 }
 
 /* ========== BOGOTÁ COVERAGE MAP STYLES ========== */
+#cobertura-bogota {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+.map-bogota-wrap {
+  position: relative;
+  background: #070709;
+  border: 1px solid rgba(57,255,20,0.1);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+.map-hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding-bottom: 10px;
+}
 .locality-sector {
   transition: all 0.3s ease;
   cursor: pointer;
@@ -1216,3 +1256,700 @@ footer {
   opacity: 1;
   transform: scale(1);
 }
+
+#formatos-negocio {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  background: #070709;
+}
+
+/* ========== CAROUSEL FORMATOS ========== */
+.carousel-formatos {
+  display: flex !important;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 24px;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-formatos::-webkit-scrollbar {
+  height: 8px;
+}
+.carousel-formatos::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+}
+.carousel-formatos::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.carousel-formatos .form-card-item {
+  scroll-snap-align: start;
+  flex: 0 0 320px;
+}
+
+@media (max-width: 640px) {
+  .carousel-formatos .form-card-item {
+    flex: 0 0 280px;
+  }
+}
+
+/* ========== LIGHT MODE ========== */
+html {
+  background-color: var(--bg);
+}
+
+html.light-mode {
+  --bg: #f8fafc; /* Premium warm/slate white background */
+  --bg-alt: #f1f5f9; /* Slate light grey alternative background */
+  --bg-card: rgba(255, 255, 255, 0.75); /* Clean white cards with glassmorphism */
+  --bg-card-hover: rgba(255, 255, 255, 0.92);
+  --border: rgba(0, 0, 0, 0.08); /* Darker borders for contrast */
+  --border-green: rgba(21, 128, 61, 0.25);
+  --text: #1e293b; /* Charcoal dark text */
+  --text-muted: #64748b; /* Slate grey muted text */
+  --white: #0f172a;
+  
+  --text-primary: #15803d; /* Elegant forest green for readability */
+  --primary-glow: rgba(21, 128, 61, 0.15);
+  
+  --text-accent: #c50000; /* Rich crimson red for readability */
+  --text-inverse: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.04);
+  --bg-overlay: rgba(255, 255, 255, 0.7);
+}
+
+/* Subtle grid texture in light mode */
+html.light-mode body {
+  background-image:
+    linear-gradient(rgba(21,128,61,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,128,61,0.04) 1px, transparent 1px) !important;
+}
+
+/* Scrollbar adjustment */
+html.light-mode ::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+/* Navbar Scrolled light styles */
+html.light-mode header.scrolled {
+  background: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 1px 0 var(--border), 0 4px 30px rgba(0,0,0,0.04) !important;
+}
+html.light-mode .nav-links a {
+  color: #4b5563 !important;
+}
+html.light-mode .nav-links a:hover {
+  color: #15803d !important;
+  text-shadow: none !important;
+}
+
+/* Hero Light Mode Enhancements (Localized left-side backing and high-contrast text shadows) */
+html.light-mode .hero-overlay {
+  background: radial-gradient(circle at 25% 50%, rgba(248, 250, 252, 0.92) 0%, rgba(248, 250, 252, 0.45) 50%, rgba(248, 250, 252, 0) 100%) !important;
+  display: block !important;
+}
+html.light-mode .hero-overlay-green {
+  background: radial-gradient(ellipse at 70% 50%, rgba(21, 128, 61, 0.06) 0%, transparent 60%) !important;
+}
+html.light-mode .hero-content {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html.light-mode .hero h1 {
+  color: #111827 !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 25px rgba(255, 255, 255, 0.75), 0 0 40px rgba(255, 255, 255, 0.5) !important;
+}
+html.light-mode .hero h1 em {
+  color: #15803d !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 25px rgba(255, 255, 255, 0.75), 0 0 40px rgba(255, 255, 255, 0.5) !important;
+}
+html.light-mode .hero h1 strong {
+  color: #c50000 !important;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 25px rgba(255, 255, 255, 0.75), 0 0 40px rgba(255, 255, 255, 0.5) !important;
+}
+html.light-mode .hero-sub {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.75) !important;
+}
+html.light-mode .hero-scroll {
+  color: #4b5563 !important;
+}
+
+/* Hardcoded white text elements reset to charcoal black */
+html.light-mode h1,
+html.light-mode h2,
+html.light-mode h3,
+html.light-mode h4,
+html.light-mode .hero h1,
+html.light-mode .section-title,
+html.light-mode .biz-card h3,
+html.light-mode .brand-info-side h3,
+html.light-mode .valor-card h3,
+html.light-mode .dif-item h4,
+html.light-mode .dif-future ul li,
+html.light-mode .contact-info h2,
+html.light-mode .footer-col h4 {
+  color: #111827 !important;
+}
+
+/* Green accents & glows overrides */
+html.light-mode .hero h1 em,
+html.light-mode .section-title em,
+html.light-mode .section-label,
+html.light-mode .metodo-step h4,
+html.light-mode .aliado-body h3,
+html.light-mode .mvp-item h4,
+html.light-mode .prob-card.solution h3,
+html.light-mode .biz-card.brand h3,
+html.light-mode .text-primary {
+  color: #15803d !important;
+  text-shadow: none !important;
+}
+
+html.light-mode .prob-card p {
+  color: var(--text-muted) !important;
+}
+
+/* Red accents & glows overrides */
+html.light-mode .hero h1 strong,
+html.light-mode .text-accent,
+html.light-mode .prob-card.problem h3,
+html.light-mode .biz-card.eds h3,
+html.light-mode .brand-info-side .brand-badge {
+  color: #c50000 !important;
+  text-shadow: none !important;
+}
+
+/* Buttons and interactivity */
+html.light-mode .btn-ghost {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: #1f2937 !important;
+}
+html.light-mode .btn-ghost:hover {
+  border-color: var(--primary) !important;
+  color: #000 !important;
+  background: var(--primary) !important;
+}
+
+/* Card custom shadows and styling */
+html.light-mode .card,
+html.light-mode .glass-card,
+html.light-mode .biz-card,
+html.light-mode .metodo-step,
+html.light-mode .valor-card,
+html.light-mode .dif-item,
+html.light-mode .contact-form,
+html.light-mode .hero-stats,
+html.light-mode .cgbi-graphic-card,
+html.light-mode .sikai-dashboard {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+html.light-mode .card:hover,
+html.light-mode .dif-item:hover,
+html.light-mode .contact-form:hover,
+html.light-mode .cgbi-graphic-card:hover,
+html.light-mode .sikai-dashboard:hover {
+  background: var(--bg-card-hover) !important;
+  border-color: var(--border-green) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06), 0 0 25px rgba(21, 128, 61, 0.08) !important;
+}
+html.light-mode .hero-stats {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+}
+html.light-mode .hero-stat {
+  border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+html.light-mode .hero-stat h3 {
+  color: #15803d !important;
+  text-shadow: none !important;
+}
+html.light-mode .hero-stat p {
+  color: #4b5563 !important;
+}
+
+/* Form submission style override */
+html.light-mode .form-field {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111827 !important;
+}
+html.light-mode .form-field:focus {
+  border-color: #15803d !important;
+  box-shadow: 0 0 20px rgba(21, 128, 61, 0.08) !important;
+}
+
+/* Bullet list checkmark colors */
+html.light-mode .biz-card.brand .chk {
+  background: rgba(21, 128, 61, 0.1) !important;
+  color: #15803d !important;
+}
+html.light-mode .biz-card.eds .chk {
+  background: rgba(197, 0, 0, 0.1) !important;
+  color: #c50000 !important;
+}
+
+/* Brand Showcase buttons */
+html.light-mode .brand-tab-btn {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #4b5563 !important;
+}
+html.light-mode .brand-tab-btn:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+  color: #111827 !important;
+}
+html.light-mode .brand-tab-btn.active {
+  background: var(--primary) !important;
+  color: #000 !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 20px var(--primary-glow) !important;
+}
+html.light-mode .brand-content-box {
+  background: var(--bg-alt) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03) !important;
+}
+html.light-mode .brand-img-side {
+  background: #ffffff !important;
+  border-color: var(--border) !important;
+}
+
+/* Lineas de Negocio overlay tweak */
+html.light-mode .linea-overlay {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 60%, transparent 100%) !important;
+}
+html.light-mode .linea-card:hover .linea-overlay {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(21, 128, 61, 0.12) 100%) !important;
+}
+html.light-mode .linea-body h3 {
+  color: #111827 !important;
+}
+html.light-mode .linea-body p {
+  color: #4b5563 !important;
+}
+
+/* Expansion Channels list tweaks */
+html.light-mode .canal-card {
+  background: #ffffff !important;
+  border-color: var(--border) !important;
+}
+html.light-mode .canal-overlay {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 60%, transparent 100%) !important;
+}
+html.light-mode .canal-card:hover .canal-overlay {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.98) 0%, rgba(21, 128, 61, 0.12) 100%) !important;
+}
+html.light-mode .canal-card h3 {
+  color: #111827 !important;
+}
+html.light-mode .canal-desc {
+  color: #4b5563 !important;
+}
+html.light-mode .canal-icon {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #15803d !important;
+}
+html.light-mode .canal-card:hover .canal-icon {
+  background: var(--primary) !important;
+  color: #000 !important;
+  border-color: var(--primary) !important;
+}
+
+/* Portafolio tweaks */
+html.light-mode .portfolio-info {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.25) 60%, transparent 100%) !important;
+}
+html.light-mode .portfolio-info h3 {
+  color: #111827 !important;
+}
+html.light-mode .portfolio-info p {
+  color: #4b5563 !important;
+}
+html.light-mode .portfolio-card:hover .portfolio-badge {
+  background: var(--primary) !important;
+  color: #000 !important;
+}
+
+/* Zone Filter & Commercial Format buttons */
+html.light-mode .btn-zone-filter,
+html.light-mode .filter-format-btn {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #4b5563 !important;
+}
+html.light-mode .btn-zone-filter:hover,
+html.light-mode .filter-format-btn:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+  color: #111827 !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+html.light-mode .btn-zone-filter.active,
+html.light-mode .filter-format-btn.active {
+  background: rgba(21, 128, 61, 0.08) !important;
+  border-color: var(--primary) !important;
+  color: #15803d !important;
+  box-shadow: 0 0 15px rgba(21, 128, 61, 0.15) !important;
+}
+
+/* Geomarketing map panel details override */
+html.light-mode .geomap-container {
+  background-color: var(--bg) !important;
+  border: 1px solid var(--border) !important;
+}
+html.light-mode .map-hud-btn {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #111827 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04) !important;
+}
+html.light-mode .map-hud-btn:hover {
+  background: var(--primary) !important;
+  color: #000 !important;
+  border-color: var(--primary) !important;
+}
+html.light-mode .ped-origin-badge {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(34, 213, 196, 0.4) !important;
+  color: #0f766e !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04) !important;
+}
+html.light-mode .ped-origin-dot {
+  background: #0f766e !important;
+  box-shadow: 0 0 6px rgba(15, 118, 110, 0.5) !important;
+}
+html.light-mode .map-node .node-label {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  color: #1f2937 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+}
+html.light-mode .layer-toggle-btn {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #4b5563 !important;
+}
+html.light-mode .layer-toggle-btn:hover {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  color: #111827 !important;
+}
+html.light-mode .layer-toggle-btn.active {
+  background: rgba(21, 128, 61, 0.1) !important;
+  border-color: #15803d !important;
+  color: #15803d !important;
+  box-shadow: 0 0 12px rgba(21, 128, 61, 0.15) !important;
+}
+html.light-mode .layer-toggle-btn#btnLayerHeatmap.active {
+  background: rgba(197, 0, 0, 0.1) !important;
+  border-color: #c50000 !important;
+  color: #c50000 !important;
+  box-shadow: 0 0 12px rgba(197, 0, 0, 0.15) !important;
+}
+html.light-mode .layer-toggle-btn#btnLayerPedestrian.active {
+  background: rgba(15, 118, 110, 0.1) !important;
+  border-color: #0f766e !important;
+  color: #0f766e !important;
+  box-shadow: 0 0 12px rgba(15, 118, 110, 0.15) !important;
+}
+
+/* Gallery image nitidez */
+html.light-mode .gallery-masonry .g-item img {
+  filter: none !important;
+}
+html.light-mode .gallery-masonry .g-item:hover img {
+  filter: none !important;
+  transform: scale(1.08) !important;
+}
+
+/* Footer light theme styles */
+html.light-mode footer {
+  background: #f1f5f9 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .footer-brand p {
+  color: #4b5563 !important;
+}
+html.light-mode .footer-col h4 {
+  color: #1e293b !important;
+}
+html.light-mode .footer-col ul li a {
+  color: #4b5563 !important;
+}
+html.light-mode .footer-col ul li a:hover {
+  color: #15803d !important;
+}
+html.light-mode .footer-bottom p {
+  color: #64748b !important;
+}
+
+/* Toggle Theme Button */
+#theme-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.2rem;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--dur) var(--ease);
+  width: 40px;
+  height: 40px;
+}
+html.light-mode #theme-toggle {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: #111827 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+#theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+html.light-mode #theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-color: #15803d !important;
+  box-shadow: 0 0 15px rgba(21, 128, 61, 0.15) !important;
+}
+
+/* Interactive Bogotá SVG Map Overrides for Light Mode */
+html.light-mode .map-bogota-wrap {
+  background: var(--bg-card) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.03) !important;
+}
+html.light-mode #svgBogotaMap path[fill="#0f0f14"] {
+  fill: #e2e8f0 !important;
+  stroke: #cbd5e1 !important;
+  stroke-width: 2px !important;
+}
+html.light-mode #svgBogotaMap path.locality-sector {
+  fill: rgba(0, 0, 0, 0.01) !important;
+  stroke: rgba(0, 0, 0, 0.06) !important;
+}
+html.light-mode #svgBogotaMap path:not(.locality-sector):not([fill="#0f0f14"]) {
+  stroke: rgba(0, 0, 0, 0.12) !important;
+}
+html.light-mode #svgBogotaMap text {
+  fill: rgba(0, 0, 0, 0.7) !important;
+}
+html.light-mode .map-hud-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode #cobertura-bogota {
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Branded Alternating Backgrounds in Light Mode (Red/Green Stop & Go) */
+html.light-mode #solucion,
+html.light-mode #formatos-negocio,
+html.light-mode #aliados {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.16) 0%, #ffffff 50%, rgba(57, 255, 20, 0.06) 100%) !important; /* Vivid brand green (Go) */
+  border-top: 4px solid var(--primary) !important;
+  border-bottom: 2px solid rgba(57, 255, 20, 0.2) !important;
+}
+html.light-mode .section-dark,
+html.light-mode #modulos,
+html.light-mode #contacto {
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.12) 0%, #ffffff 50%, rgba(230, 0, 0, 0.05) 100%) !important; /* Vivid brand red (Stop) */
+  border-top: 4px solid var(--accent) !important;
+  border-bottom: 2px solid rgba(230, 0, 0, 0.15) !important;
+}
+html.light-mode #cobertura-bogota,
+html.light-mode #diferenciadores-seccion,
+html.light-mode #galeria {
+  background: #f8fafc !important; /* Soft light slate (Neutral) */
+}
+html.light-mode #alianza-estrategica,
+html.light-mode #quienes-somos {
+  background: #ffffff !important; /* Pure white */
+}
+/* Dual Brand Crossfade for Section Darker (Líneas de Negocio, Metodología) in Light Mode */
+html.light-mode .section-darker {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #ffffff 50%, rgba(230, 0, 0, 0.12) 100%) !important;
+  border-top: 4px solid #15803d !important;
+  border-bottom: 4px solid #c50000 !important;
+}
+
+/* Sections, Gradients and Problem/Solution Cards Overrides for Light Mode */
+html.light-mode .section-green {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%) !important;
+}
+html.light-mode .section-red {
+  background: linear-gradient(135deg, rgba(197, 0, 0, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%) !important;
+}
+html.light-mode .prob-card.problem {
+  background: #ffffff !important;
+  border-color: rgba(230, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(230, 0, 0, 0.02) !important;
+}
+html.light-mode .prob-card.solution {
+  background: #ffffff !important;
+  border-color: rgba(34, 197, 94, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.02) !important;
+}
+
+/* Geomarketing study case dashboard light overrides */
+html.light-mode .sikai-dashboard {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03) !important;
+}
+html.light-mode .sikai-dashboard-grid {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03) !important;
+}
+html.light-mode .sikai-dashboard-col-left {
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .geomap-container {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode #cobertura-bogota .card {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode #cobertura-bogota .card strong {
+  color: #111827 !important;
+}
+html.light-mode #cobertura-bogota .card span {
+  color: #4b5563 !important;
+}
+html.light-mode #cobertura-bogota ul.check-list,
+html.light-mode #cobertura-bogota ul.check-list span {
+  color: #1e293b !important;
+}
+html.light-mode .sikai-dashboard h4,
+html.light-mode .sikai-dashboard h5,
+html.light-mode .sikai-dashboard-grid h5,
+html.light-mode .sikai-dashboard-grid h4,
+html.light-mode .sikai-dashboard-grid p,
+html.light-mode .sikai-dashboard-grid ul,
+html.light-mode .sikai-dashboard-grid li,
+html.light-mode .sikai-dashboard-grid span:not([style*="color: var(--primary)"]):not([style*="color:var(--primary)"]) {
+  color: #1e293b !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .sikai-dashboard-grid div[style*="background: rgba(255,255,255,0.01)"],
+html.light-mode .sikai-dashboard-grid div[style*="background: rgba(255,255,255,0.02)"],
+html.light-mode .sikai-dashboard-grid div[style*="background: rgba(0,0,0,0.4)"] {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .sikai-dashboard-grid strong[style*="color: #fff"],
+html.light-mode .sikai-dashboard-grid span[style*="color: #fff"] {
+  color: #1e293b !important;
+}
+html.light-mode .range-badge {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: #1e293b !important;
+}
+html.light-mode #bogotaMapTooltip {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: #15803d !important;
+  color: #111827 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .geomap-container div[style*="border-left"] {
+  border-left-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .geomap-container div[style*="border-right"] {
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .geomap-container div[style*="border-top"] {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .geomap-container div[style*="border-bottom"] {
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .geomap-container div[style*="color: rgba(255,255,255"] {
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ==========================================================================
+   ADDITIONAL LIGHT MODE CONTRAST & CARD ACCENTS OVERRIDES
+   ========================================================================== */
+
+/* Business Formats Cards Override in Light Mode */
+html.light-mode .form-card-item {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+}
+html.light-mode .form-card-item h4 {
+  color: #111827 !important;
+}
+html.light-mode .form-card-item p {
+  color: #4b5563 !important;
+}
+html.light-mode .form-card-item div[style*="border-top"] {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .form-card-item div[style*="border-top"] span {
+  color: #4b5563 !important;
+}
+html.light-mode .form-card-item div[style*="border-top"] span strong {
+  color: #111827 !important;
+}
+
+/* ROI Counters Override in Light Mode */
+html.light-mode .roi-bar {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+html.light-mode .roi-item {
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .roi-number {
+  color: #15803d !important; /* Go Green brand color */
+  text-shadow: none !important;
+}
+html.light-mode .roi-item h4 {
+  color: #1e293b !important;
+}
+
+/* Badge & Tag legibility overrides in Light Mode */
+html.light-mode .canal-tag {
+  background: rgba(21, 128, 61, 0.1) !important;
+  border-color: rgba(21, 128, 61, 0.25) !important;
+  color: #15803d !important;
+}
+html.light-mode .canal-card:hover .canal-tag {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+html.light-mode .portfolio-badge {
+  border-color: rgba(21, 128, 61, 0.4) !important;
+  color: #15803d !important;
+}
+html.light-mode .portfolio-card:hover .portfolio-badge {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #000 !important;
+}
+html.light-mode .linea-card:hover .linea-tag {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+
