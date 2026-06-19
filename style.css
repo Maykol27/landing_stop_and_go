@@ -1311,6 +1311,9 @@ html {
 }
 
 html.light-mode {
+  --primary: #15803d; /* Elegant forest green for readability and brand match */
+  --primary-dark: #166534; /* Darker green for hover states */
+  --primary-glow: rgba(21, 128, 61, 0.25); /* High-contrast green glow */
   --bg: #f8fafc; /* Premium warm/slate white background */
   --bg-alt: #f1f5f9; /* Slate light grey alternative background */
   --bg-card: #ffffff; /* Solid white card backgrounds for high contrast */
@@ -1322,7 +1325,6 @@ html.light-mode {
   --white: #0f172a;
   
   --text-primary: #15803d; /* Elegant forest green for readability */
-  --primary-glow: rgba(21, 128, 61, 0.15);
   
   --text-accent: #c50000; /* Rich crimson red for readability */
   --text-inverse: #ffffff;
@@ -1445,14 +1447,25 @@ html.light-mode .brand-info-side .brand-badge {
 }
 
 /* Buttons and interactivity */
+html.light-mode .btn-green {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(21, 128, 61, 0.2) !important;
+}
+html.light-mode .btn-green:hover {
+  background: var(--primary-dark) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(21, 128, 61, 0.3) !important;
+}
 html.light-mode .btn-ghost {
   border-color: rgba(0, 0, 0, 0.2) !important;
   color: #1f2937 !important;
 }
 html.light-mode .btn-ghost:hover {
   border-color: var(--primary) !important;
-  color: #000 !important;
+  color: #ffffff !important;
   background: var(--primary) !important;
+  box-shadow: 0 4px 15px rgba(21, 128, 61, 0.2) !important;
 }
 
 /* Card custom shadows and styling */
@@ -1528,9 +1541,9 @@ html.light-mode .brand-tab-btn:hover {
 }
 html.light-mode .brand-tab-btn.active {
   background: var(--primary) !important;
-  color: #000 !important;
+  color: #ffffff !important;
   border-color: var(--primary) !important;
-  box-shadow: 0 0 20px var(--primary-glow) !important;
+  box-shadow: 0 4px 15px var(--primary-glow) !important;
 }
 html.light-mode .brand-content-box {
   background: var(--bg-alt) !important;
@@ -1633,7 +1646,7 @@ html.light-mode .map-hud-btn {
 }
 html.light-mode .map-hud-btn:hover {
   background: var(--primary) !important;
-  color: #000 !important;
+  color: #ffffff !important;
   border-color: var(--primary) !important;
 }
 html.light-mode .ped-origin-badge {
@@ -1651,6 +1664,18 @@ html.light-mode .map-node .node-label {
   border: 1px solid rgba(0,0,0,0.1) !important;
   color: #1f2937 !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important;
+}
+html.light-mode .map-node.active .node-label {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.2) !important;
+}
+html.light-mode .map-node.node-stop-go.active .node-label {
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  background: var(--primary) !important;
+  box-shadow: 0 4px 15px rgba(21, 128, 61, 0.3) !important;
 }
 html.light-mode .layer-toggle-btn {
   background: rgba(0, 0, 0, 0.02) !important;
@@ -1678,6 +1703,38 @@ html.light-mode .layer-toggle-btn#btnLayerPedestrian.active {
   border-color: #0f766e !important;
   color: #0f766e !important;
   box-shadow: 0 0 12px rgba(15, 118, 110, 0.15) !important;
+}
+
+/* Geomap enhancement overlays in Light Mode */
+html.light-mode .map-range-rings {
+  border-color: rgba(21, 128, 61, 0.35) !important;
+  background: radial-gradient(circle, rgba(21, 128, 61, 0.02) 60%, rgba(21, 128, 61, 0.05) 100%) !important;
+}
+html.light-mode .radar-sweep {
+  background: conic-gradient(from 0deg, transparent 40%, rgba(21, 128, 61, 0.12) 100%) !important;
+  mix-blend-mode: multiply !important;
+}
+html.light-mode .geomap-canvas div[style*="background: radial-gradient(rgba(255,255,255"] {
+  background: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px) 0 0 / 20px 20px !important;
+  opacity: 0.5 !important;
+}
+html.light-mode .map-crosshair-h,
+html.light-mode .map-crosshair-v {
+  background: rgba(21, 128, 61, 0.08) !important;
+}
+
+/* Badges with inline hardcoded green background/border reset to brand forest green in Light Mode */
+html.light-mode span[style*="background: rgba(57,255,20,0.15)"],
+html.light-mode div[style*="background: rgba(57,255,20,0.15)"] {
+  background: rgba(21, 128, 61, 0.1) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+html.light-mode span[style*="background: rgba(57,255,20,0.1)"],
+html.light-mode div[style*="background: rgba(57,255,20,0.1)"] {
+  background: rgba(21, 128, 61, 0.1) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
 }
 
 /* Gallery image nitidez */
@@ -1869,6 +1926,18 @@ html.light-mode .sikai-dashboard-grid strong[style*="color: #fff"],
 html.light-mode .sikai-dashboard-grid span[style*="color: #fff"] {
   color: #1e293b !important;
 }
+html.light-mode .sikai-tabs-header {
+  background: #f1f5f9 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light-mode .sikai-tab-btn:hover {
+  color: #111827 !important;
+}
+html.light-mode .sikai-tab-btn.active {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px var(--primary-glow) !important;
+}
 html.light-mode .range-badge {
   background: rgba(255, 255, 255, 0.95) !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
@@ -1957,7 +2026,7 @@ html.light-mode .portfolio-badge {
 html.light-mode .portfolio-card:hover .portfolio-badge {
   background: var(--primary) !important;
   border-color: var(--primary) !important;
-  color: #000 !important;
+  color: #ffffff !important;
 }
 html.light-mode .linea-card:hover .linea-tag {
   background: var(--accent) !important;
@@ -1983,12 +2052,13 @@ html.light-mode .metodo-step {
   box-shadow: none !important;
 }
 html.light-mode .metodo-num {
+  color: #ffffff !important;
   border: 4px solid #ffffff !important;
-  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4) !important;
+  box-shadow: 0 0 30px var(--primary-glow) !important;
 }
 html.light-mode .metodo-step:hover .metodo-num {
   transform: scale(1.15);
-  box-shadow: 0 0 50px rgba(34, 197, 94, 0.6) !important;
+  box-shadow: 0 0 50px rgba(21, 128, 61, 0.4) !important;
 }
 html.light-mode .form-card-item {
   border-bottom: 5px solid #15803d !important;
