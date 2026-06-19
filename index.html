@@ -330,10 +330,10 @@
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px;">
               <div>
                 <span class="dashboard-badge-tag" style="font-size: 0.65rem; color: var(--primary); font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">SIKAI Consulting GEOMARKETING SYSTEM v4.2</span>
-                <h4 style="color: #fff; font-size: 1.25rem; font-weight: 800; margin: 4px 0 0 0;">Caso de Estudio: Calle 19 × Cra 30</h4>
+                <h4 style="color: #fff; font-size: 1.25rem; font-weight: 800; margin: 4px 0 0 0;">Visualización GIS &amp; Radios de Influencia</h4>
               </div>
               <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                <span style="background: rgba(57,255,20,0.1); border: 1px solid var(--primary); color: var(--primary); font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px;">VIABILIDAD ALTA 96%</span>
+                <span style="background: rgba(57,255,20,0.1); border: 1px solid var(--primary); color: var(--primary); font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px;">ANÁLISIS DE VIABILIDAD</span>
               </div>
             </div>
             
@@ -560,197 +560,49 @@
               </div>
             </div>
 
-            <!-- Landmark Dynamically Updated Panel (Balanced 2-Column Corporate Report) -->
-            <div id="landmarkDetailPanel" class="sikai-dashboard-grid" style="padding: 22px; min-height: 260px; transition: all 0.3s ease; display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px;">
-              
-              <!-- Left Column: Point Technical Specification File -->
-              <div style="display: flex; flex-direction: column; gap: 12px; border-right: 1px solid rgba(255,255,255,0.06); padding-right: 20px;" class="sikai-dashboard-col-left">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px;">
-                  <h5 id="nodeInfoTitle" style="color: #fff; font-size: 1.05rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--heading);">Punto de Servicio STOP & GO</h5>
-                  <span id="nodeInfoDist" style="font-size: 0.65rem; background: rgba(57,255,20,0.15); color: var(--primary); font-weight: 800; padding: 3px 10px; border-radius: 6px; border: 1px solid rgba(57,255,20,0.2); text-transform: uppercase; white-space: nowrap;">Estación Central</span>
-                </div>
-                
-                <p id="nodeInfoDesc" style="font-size: 0.82rem; color: rgba(255,255,255,0.85); margin: 0; line-height: 1.5;">Ubicado en la intersección de la Calle 19 con Carrera 30, este lote aprovecha una de las arterias más conectadas del centro de Bogotá. Es un punto de confluencia vial masiva.</p>
-                
-                <!-- Dynamic Opportunity Section -->
-                <div>
-                  <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.8px; display: block; margin-bottom: 4px;">Análisis de Oportunidad Comercial</span>
-                  <p id="nodeInfoOpportunity" style="font-size: 0.78rem; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.45;">Intersección vial de máxima afluencia. El flujo diario de 42,100 vehículos asegura compras rápidas y permanencia. Ideal para un hub multi-servicios que rentabilice las islas de combustible o carga eléctrica.</p>
-                </div>
-                
-                <!-- Dynamic Habits Section -->
-                <div>
-                  <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.8px; display: block; margin-bottom: 6px;">Hábitos de Consumo Destacados</span>
-                  <ul id="nodeInfoHabits" style="color: rgba(255,255,255,0.75); margin: 0; padding-left: 14px; line-height: 1.45; font-size: 0.78rem; display: flex; flex-direction: column; gap: 4px;">
-                    <li>Parada rápida para reabastecer e impulso de paso.</li>
-                    <li>Consumo inmediato de snacks, repostería y café caliente.</li>
-                    <li>Retiros rápidos de efectivo en corresponsalía bancaria.</li>
-                  </ul>
-                </div>
-
-                <!-- Demographic/Audience summary inside left column -->
-                <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; margin-top: 4px;">
-                  <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.8px; display: block; margin-bottom: 8px;">Composición del Tránsito Flotante</span>
-                  <div id="nodeInfoAudiences" style="display: flex; flex-direction: column; gap: 8px;">
-                    <!-- Audiences dynamically rendered by JS -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- Right Column: Traffic Analytics Report & Interactive Chart -->
-              <div style="display: flex; flex-direction: column; gap: 14px;" class="sikai-dashboard-col-right">
-                <div style="border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-                  <span style="font-size: 0.65rem; color: #888; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; font-family: var(--heading);">ANALÍTICA DE TRÁNSITO & AFLUENCIA</span>
-                  <span id="nodeInfoFlow" style="font-size: 0.75rem; color: #fff; font-weight: 800;">42,100 veh/día</span>
-                </div>
-
-                <!-- Interactive Bar Chart -->
-                <div style="display: flex; flex-direction: column; gap: 6px;">
-                  <span style="font-size: 0.65rem; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Flujo Vehicular Relativo por Horas (IEV)</span>
-                  <div id="trafficChartContainer" style="display: flex; justify-content: space-between; align-items: flex-end; height: 75px; padding: 12px 12px 4px 12px; background: rgba(0,0,0,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative;">
-                    <!-- Bars dynamically generated by JS -->
-                  </div>
-                  <!-- Chart Legend -->
-                  <div style="display: flex; justify-content: space-between; font-size: 0.52rem; color: #666; padding: 0 4px; font-family: monospace;">
-                    <span>4 AM</span>
-                    <span style="color: var(--primary); font-weight: 700;">8 AM (Pico)</span>
-                    <span>12 PM</span>
-                    <span style="color: var(--primary); font-weight: 700;">6 PM (Pico)</span>
-                    <span>10 PM</span>
-                  </div>
-                </div>
-
-                <!-- How to Read the Chart (Guía de Interpretación) -->
-                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 12px;">
-                  <span style="color: #fff; font-weight: 800; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px;">Guía de Lectura de Afluencia Comercial</span>
-                  <p id="nodeInfoChartGuide" style="font-size: 0.72rem; color: rgba(255,255,255,0.65); margin: 0; line-height: 1.45;">
-                    El gráfico representa el **Índice de Exposición Visual (IEV)**. Las barras verde neón indican los picos de congestión (NQS velocidad &lt; 18 km/h). Esto maximiza el tiempo de permanencia visual frente a la estación, elevando la conversión por impulso en un **180%** para formatos QSR (cafeterías) y droguerías de conveniencia.
-                  </p>
-                </div>
-
-                <!-- Key Traffic KPIs -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.7rem;">
-                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
-                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Afinidad de Marca (Fit)</span>
-                    <strong id="nodeInfoMatch" style="color: var(--primary); font-size: 0.76rem;">QSR & Droguería (96%)</strong>
-                  </div>
-                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
-                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Tasa de Captura (Est.)</span>
-                    <strong id="nodeInfoCapture" style="color: #fff; font-size: 0.76rem;">1.8% - 3.2%</strong>
-                  </div>
-                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
-                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Velocidad Media / Semáforo</span>
-                    <strong id="nodeInfoSpeed" style="color: #fff; font-size: 0.76rem;">18 km/h / Sem. 45s</strong>
-                  </div>
-                  <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px;">
-                    <span style="color: var(--text-muted); font-size: 0.58rem; text-transform: uppercase;">Atracción Peatonal</span>
-                    <strong id="nodeInfoPedestrianFlow" style="color: #22d5c4; font-size: 0.76rem;">Baja (Vía Rápida)</strong>
-                  </div>
-                </div>
-
-                <!-- Brand Fit Suggestion / Action Plan -->
-                <div id="nodeInfoBrandFitAction" style="background: rgba(57,255,20,0.02); border: 1px dashed rgba(57,255,20,0.2); border-radius: 10px; padding: 10px; font-size: 0.72rem;">
-                  <strong style="color: var(--primary); text-transform: uppercase; font-size: 0.65rem; display: block; margin-bottom: 2px; font-family: var(--heading);">Recomendación SIKAI Consulting:</strong>
-                  <p id="nodeInfoRecommendationText" style="color: rgba(255,255,255,0.75); margin: 0; line-height: 1.35;">
-                    Establecer formato drive-thru y conveniencia express para capturar tráfico de paso de la Cra 30.
-                  </p>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- SIKAI Consulting Geomarketing Audit Table (KPI Matrix) -->
-            <div class="sikai-kpi-matrix card" style="margin-top: 24px; padding: 20px; background: #0c0c0f; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-              <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px; margin-bottom: 12px;">
-                <h5 style="color: #fff; font-size: 0.92rem; font-weight: 800; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--heading);">Matriz Comparativa de Viabilidad Inmobiliaria</h5>
-                <span style="font-size: 0.6rem; color: var(--primary); font-weight: 800; border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-family: monospace;">REPORTE DE MUESTRA REAL</span>
-              </div>
-              <p style="font-size: 0.78rem; color: rgba(255,255,255,0.65); margin: 0 0 14px 0; line-height: 1.45;">
-                Este análisis compara los diferentes nodos comerciales que rodean el lote **STOP & GO**. Las marcas y franquicias que adquieren nuestro servicio reciben este reporte georreferenciado detallado para justificar su expansión física.
+            <!-- Description of Geomarketing Analysis Report -->
+            <div class="analysis-description-wrap" style="margin-top: 24px; padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px;">
+              <h5 style="color: #fff; font-size: 1.05rem; font-weight: 800; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--heading); border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 8px;">¿Qué incluye nuestro Análisis de Geomarketing?</h5>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0 0 20px 0;">
+                El sistema de inteligencia de datos de **Stop & Go** evalúa científicamente cada punto para mitigar riesgos y asegurar la máxima rentabilidad comercial. Al expandir tu marca con nosotros, recibes un reporte georreferenciado completo que incluye:
               </p>
               
-              <!-- Responsive Table Wrapper -->
-              <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.72rem; min-width: 580px;">
-                  <thead>
-                    <tr style="border-bottom: 1.5px solid rgba(255,255,255,0.1); color: #fff; font-weight: 800;">
-                      <th style="padding: 8px 6px;">Punto Comercial / Landmark</th>
-                      <th style="padding: 8px 6px;">Distancia</th>
-                      <th style="padding: 8px 6px; text-align: right;">Flujo Peatonal</th>
-                      <th style="padding: 8px 6px; text-align: right;">Flujo Vehicular</th>
-                      <th style="padding: 8px 6px; text-align: center;">Tasa Captura (Est.)</th>
-                      <th style="padding: 8px 6px; color: var(--primary); text-align: center;">Afinidad Fit</th>
-                    </tr>
-                  </thead>
-                  <tbody style="color: rgba(255,255,255,0.75);">
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04); background: rgba(57,255,20,0.02);">
-                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 6px; height: 6px; border-radius:50%; background:var(--primary);"></span>
-                        STOP & GO (Punto Central)
-                      </td>
-                      <td style="padding: 8px 6px; color: var(--primary); font-weight: 700;">0m (Foco)</td>
-                      <td style="padding: 8px 6px; text-align: right;">~400 p/h</td>
-                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">42,100 v/día</td>
-                      <td style="padding: 8px 6px; text-align: center;">1.8% - 3.2%</td>
-                      <td style="padding: 8px 6px; font-weight: 700; color: var(--primary); text-align: center;">96%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 6px; height: 6px; border-radius:50%; background:#eab308;"></span>
-                        Plaza Paloquemao
-                      </td>
-                      <td style="padding: 8px 6px;">150m (N-E)</td>
-                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">+15k/mañana</td>
-                      <td style="padding: 8px 6px; text-align: right;">~8,500 v/día</td>
-                      <td style="padding: 8px 6px; text-align: center;">0.8% - 1.2%</td>
-                      <td style="padding: 8px 6px; font-weight: 700; color: #eab308; text-align: center;">95%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 6px; height: 6px; border-radius:50%; background:#3b82f6;"></span>
-                        Complejo Judicial (Juzgados)
-                      </td>
-                      <td style="padding: 8px 6px;">200m (N-E)</td>
-                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">+5k prof/día</td>
-                      <td style="padding: 8px 6px; text-align: right;">~4,200 v/día</td>
-                      <td style="padding: 8px 6px; text-align: center;">0.5% - 0.9%</td>
-                      <td style="padding: 8px 6px; font-weight: 700; color: #3b82f6; text-align: center;">94%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 6px; height: 6px; border-radius:50%; background:#f43f5e;"></span>
-                        Hospital Méderi
-                      </td>
-                      <td style="padding: 8px 6px;">350m (S-O)</td>
-                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">+8k visitas/día</td>
-                      <td style="padding: 8px 6px; text-align: right;">~12,800 v/día</td>
-                      <td style="padding: 8px 6px; text-align: center;">1.2% - 2.0%</td>
-                      <td style="padding: 8px 6px; font-weight: 700; color: #f43f5e; text-align: center;">93%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 6px; height: 6px; border-radius:50%; background:#a855f7;"></span>
-                        Mallplaza NQS
-                      </td>
-                      <td style="padding: 8px 6px;">450m (N-O)</td>
-                      <td style="padding: 8px 6px; text-align: right;">~1,200 p/h (Pico)</td>
-                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">35,500 v/día</td>
-                      <td style="padding: 8px 6px; text-align: center;">0.2% - 0.5%</td>
-                      <td style="padding: 8px 6px; font-weight: 700; color: #a855f7; text-align: center;">88%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
-                      <td style="padding: 8px 6px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 4px;">
-                        <span style="width: 6px; height: 6px; border-radius:50%; background:#22d5c4;"></span>
-                        Estación TransMilenio
-                      </td>
-                      <td style="padding: 8px 6px;">100m (Acceso)</td>
-                      <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #fff;">3,800 p/h (Pico)</td>
-                      <td style="padding: 8px 6px; text-align: right; color: #666;">-- (Masivo)</td>
-                      <td style="padding: 8px 6px; text-align: center;">3.0% - 5.5%</td>
-                      <td style="padding: 8px 6px; font-weight: 700; color: #22d5c4; text-align: center;">91%</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <!-- Item 1 -->
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                  <div style="color: var(--primary); font-size: 1.15rem; line-height: 1; font-weight: 900;">✓</div>
+                  <div>
+                    <h6 style="color: #fff; font-size: 0.85rem; font-weight: 800; margin: 0 0 4px 0; text-transform: uppercase; font-family: var(--heading);">Conteo & Analítica de Tránsito</h6>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45;">Medición de flujo vehicular relativo por horas, velocidades promedio de tráfico e Índice de Exposición Visual (IEV) para estimar la retención frente a tu local.</p>
+                  </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                  <div style="color: var(--primary); font-size: 1.15rem; line-height: 1; font-weight: 900;">✓</div>
+                  <div>
+                    <h6 style="color: #fff; font-size: 0.85rem; font-weight: 800; margin: 0 0 4px 0; text-transform: uppercase; font-family: var(--heading);">Estudio de Afinidad de Marca (Fit)</h6>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45;">Modelado de compatibilidad comercial y tasa de captura estimada en base a la composición socioeconómica y los hábitos de consumo detectados en la zona.</p>
+                  </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                  <div style="color: var(--primary); font-size: 1.15rem; line-height: 1; font-weight: 900;">✓</div>
+                  <div>
+                    <h6 style="color: #fff; font-size: 0.85rem; font-weight: 800; margin: 0 0 4px 0; text-transform: uppercase; font-family: var(--heading);">Radios de Influencia Comercial</h6>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45;">Definición precisa de radios de cobertura a 150m (foco directo) y 300m (área de influencia) para mapear el alcance real de peatones y vehículos.</p>
+                  </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                  <div style="color: var(--primary); font-size: 1.15rem; line-height: 1; font-weight: 900;">✓</div>
+                  <div>
+                    <h6 style="color: #fff; font-size: 0.85rem; font-weight: 800; margin: 0 0 4px 0; text-transform: uppercase; font-family: var(--heading);">Matriz de Viabilidad Comparativa</h6>
+                    <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.45;">Comparativa georreferenciada con otros generadores de tráfico del sector (estaciones de transporte, centros comerciales, oficinas) para asegurar tu decisión.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1233,8 +1085,8 @@
 
       // Update Panel Details
       const data = nodeData[nodeId];
-      if (data) {
-        const panel = document.getElementById('landmarkDetailPanel');
+      const panel = document.getElementById('landmarkDetailPanel');
+      if (data && panel) {
         panel.style.opacity = 0;
         setTimeout(() => {
           document.getElementById('nodeInfoTitle').innerText = data.title;
