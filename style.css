@@ -1153,7 +1153,6 @@ footer {
 
 /* ========== BOGOTÁ COVERAGE MAP STYLES ========== */
 #cobertura-bogota {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
   overflow: hidden;
 }
 .map-bogota-wrap {
@@ -1259,7 +1258,6 @@ footer {
 }
 
 #formatos-negocio {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
   background: #070709;
 }
 
@@ -1752,9 +1750,6 @@ html.light-mode #svgBogotaMap text {
 html.light-mode .map-hud-header {
   border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
-html.light-mode #cobertura-bogota {
-  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-}
 
 /* Branded Alternating Backgrounds in Light Mode (Red/Green Stop & Go) */
 html.light-mode #solucion,
@@ -1995,16 +1990,12 @@ html.light-mode .aliado-card {
 html:not(.light-mode) #solucion,
 html:not(.light-mode) #formatos-negocio,
 html:not(.light-mode) #aliados {
-  background: linear-gradient(135deg, rgba(57, 255, 20, 0.04) 0%, #070709 50%, rgba(57, 255, 20, 0.01) 100%) !important; /* Deep dark green (Go) */
-  border-top: 4px solid var(--primary) !important;
-  border-bottom: 2px solid rgba(57, 255, 20, 0.1) !important;
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.18) 0%, #070709 50%, rgba(57, 255, 20, 0.08) 100%) !important; /* Deep dark green (Go) - Increased saturation, no border */
 }
 html:not(.light-mode) .section-dark,
 html:not(.light-mode) #modulos,
 html:not(.light-mode) #contacto {
-  background: linear-gradient(135deg, rgba(230, 0, 0, 0.03) 0%, #070709 50%, rgba(230, 0, 0, 0.01) 100%) !important; /* Deep dark red (Stop) */
-  border-top: 4px solid var(--accent) !important;
-  border-bottom: 2px solid rgba(230, 0, 0, 0.08) !important;
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.15) 0%, #070709 50%, rgba(230, 0, 0, 0.06) 100%) !important; /* Deep dark red (Stop) - Increased saturation, no border */
 }
 html:not(.light-mode) #cobertura-bogota,
 html:not(.light-mode) #diferenciadores-seccion,
@@ -2017,7 +2008,12 @@ html:not(.light-mode) #quienes-somos {
 }
 /* Dual Brand Crossfade for Section Darker (Líneas de Negocio, Metodología) in Dark Mode */
 html:not(.light-mode) .section-darker {
-  background: linear-gradient(135deg, rgba(57, 255, 20, 0.03) 0%, #070709 50%, rgba(230, 0, 0, 0.03) 100%) !important;
-  border-top: 4px solid #15803d !important;
-  border-bottom: 4px solid #c50000 !important;
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #070709 50%, rgba(230, 0, 0, 0.12) 100%) !important; /* Increased saturation, no border */
+}
+/* Section Green and Section Red in Dark Mode */
+html:not(.light-mode) .section-green {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.16) 0%, #070709 50%, rgba(57, 255, 20, 0.06) 100%) !important;
+}
+html:not(.light-mode) .section-red {
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.14) 0%, #070709 50%, rgba(230, 0, 0, 0.05) 100%) !important;
 }
