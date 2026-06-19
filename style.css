@@ -1755,31 +1755,29 @@ html.light-mode .map-hud-header {
 html.light-mode #solucion,
 html.light-mode #formatos-negocio,
 html.light-mode #aliados {
-  background: linear-gradient(135deg, rgba(57, 255, 20, 0.16) 0%, #ffffff 50%, rgba(57, 255, 20, 0.06) 100%) !important; /* Vivid brand green (Go) */
-  border-top: 4px solid var(--primary) !important;
-  border-bottom: 2px solid rgba(57, 255, 20, 0.2) !important;
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.16) 0%, #ffffff 50%, rgba(57, 255, 20, 0.06) 100%) !important; /* Vivid brand green (Go) - No border */
 }
 html.light-mode .section-dark,
 html.light-mode #modulos,
 html.light-mode #contacto {
-  background: linear-gradient(135deg, rgba(230, 0, 0, 0.12) 0%, #ffffff 50%, rgba(230, 0, 0, 0.05) 100%) !important; /* Vivid brand red (Stop) */
-  border-top: 4px solid var(--accent) !important;
-  border-bottom: 2px solid rgba(230, 0, 0, 0.15) !important;
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.12) 0%, #ffffff 50%, rgba(230, 0, 0, 0.05) 100%) !important; /* Vivid brand red (Stop) - No border */
 }
-html.light-mode #cobertura-bogota,
+html.light-mode #cobertura-bogota {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.16) 0%, #ffffff 50%, rgba(57, 255, 20, 0.06) 100%) !important; /* Go green brand gradient, no border */
+}
+html.light-mode #alianza-estrategica {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #ffffff 50%, rgba(230, 0, 0, 0.12) 100%) !important; /* Crossfade brand gradient, no border */
+}
 html.light-mode #diferenciadores-seccion,
 html.light-mode #galeria {
   background: #f8fafc !important; /* Soft light slate (Neutral) */
 }
-html.light-mode #alianza-estrategica,
 html.light-mode #quienes-somos {
   background: #ffffff !important; /* Pure white */
 }
 /* Dual Brand Crossfade for Section Darker (Líneas de Negocio, Metodología) in Light Mode */
 html.light-mode .section-darker {
-  background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #ffffff 50%, rgba(230, 0, 0, 0.12) 100%) !important;
-  border-top: 4px solid #15803d !important;
-  border-bottom: 4px solid #c50000 !important;
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #ffffff 50%, rgba(230, 0, 0, 0.12) 100%) !important; /* No border */
 }
 
 /* Sections, Gradients and Problem/Solution Cards Overrides for Light Mode */
@@ -1803,24 +1801,28 @@ html.light-mode .prob-card.solution {
 /* Geomarketing study case dashboard light overrides */
 html.light-mode .sikai-dashboard {
   background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03) !important;
+  border: none !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04) !important;
+}
+html.light-mode .sikai-dashboard div[style*="border-bottom"] {
+  border-bottom: none !important;
 }
 html.light-mode .sikai-dashboard-grid {
   background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03) !important;
 }
 html.light-mode .sikai-dashboard-col-left {
-  border-right-color: rgba(0, 0, 0, 0.08) !important;
+  border-right: none !important;
 }
 html.light-mode .geomap-container {
   background-color: #f1f5f9 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
 }
 html.light-mode #cobertura-bogota .card {
   background: #ffffff !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
 }
 html.light-mode #cobertura-bogota .card strong {
   color: #111827 !important;
@@ -1841,13 +1843,11 @@ html.light-mode .sikai-dashboard-grid ul,
 html.light-mode .sikai-dashboard-grid li,
 html.light-mode .sikai-dashboard-grid span:not([style*="color: var(--primary)"]):not([style*="color:var(--primary)"]) {
   color: #1e293b !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
 }
 html.light-mode .sikai-dashboard-grid div[style*="background: rgba(255,255,255,0.01)"],
 html.light-mode .sikai-dashboard-grid div[style*="background: rgba(255,255,255,0.02)"],
 html.light-mode .sikai-dashboard-grid div[style*="background: rgba(0,0,0,0.4)"] {
   background: rgba(0, 0, 0, 0.02) !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
 }
 html.light-mode .sikai-dashboard-grid strong[style*="color: #fff"],
 html.light-mode .sikai-dashboard-grid span[style*="color: #fff"] {
@@ -1986,6 +1986,15 @@ html.light-mode .aliado-card {
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08) !important;
 }
 
+/* Borderless elements in Light Mode for Cobertura and Alianza */
+html.light-mode .map-bogota-wrap {
+  border: none !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04) !important;
+}
+html.light-mode .map-hud-header {
+  border-bottom: none !important;
+}
+
 /* Branded Alternating Backgrounds in Dark Mode (Red/Green Stop & Go) */
 html:not(.light-mode) #solucion,
 html:not(.light-mode) #formatos-negocio,
@@ -1997,18 +2006,29 @@ html:not(.light-mode) #modulos,
 html:not(.light-mode) #contacto {
   background: linear-gradient(135deg, rgba(230, 0, 0, 0.15) 0%, #070709 50%, rgba(230, 0, 0, 0.06) 100%) !important; /* Deep dark red (Stop) - Increased saturation, no border */
 }
-html:not(.light-mode) #cobertura-bogota,
+html:not(.light-mode) #cobertura-bogota {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.18) 0%, #070709 50%, rgba(57, 255, 20, 0.08) 100%) !important; /* Go green brand gradient */
+}
+html:not(.light-mode) #alianza-estrategica {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #070709 50%, rgba(230, 0, 0, 0.12) 100%) !important; /* Crossfade brand gradient */
+}
 html:not(.light-mode) #diferenciadores-seccion,
 html:not(.light-mode) #galeria {
   background: #0d0d10 !important; /* Deep slate grey */
 }
-html:not(.light-mode) #alianza-estrategica,
 html:not(.light-mode) #quienes-somos {
   background: #070709 !important; /* Solid black */
 }
 /* Dual Brand Crossfade for Section Darker (Líneas de Negocio, Metodología) in Dark Mode */
 html:not(.light-mode) .section-darker {
   background: linear-gradient(135deg, rgba(57, 255, 20, 0.14) 0%, #070709 50%, rgba(230, 0, 0, 0.12) 100%) !important; /* Increased saturation, no border */
+}
+/* Section Green and Section Red in Dark Mode */
+html:not(.light-mode) .section-green {
+  background: linear-gradient(135deg, rgba(57, 255, 20, 0.16) 0%, #070709 50%, rgba(57, 255, 20, 0.06) 100%) !important;
+}
+html:not(.light-mode) .section-red {
+  background: linear-gradient(135deg, rgba(230, 0, 0, 0.14) 0%, #070709 50%, rgba(230, 0, 0, 0.05) 100%) !important;
 }
 /* Section Green and Section Red in Dark Mode */
 html:not(.light-mode) .section-green {
