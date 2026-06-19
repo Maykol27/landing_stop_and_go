@@ -1459,7 +1459,6 @@ html.light-mode .btn-ghost:hover {
 html.light-mode .card,
 html.light-mode .glass-card,
 html.light-mode .biz-card,
-html.light-mode .metodo-step,
 html.light-mode .valor-card,
 html.light-mode .dif-item,
 html.light-mode .contact-form,
@@ -1980,7 +1979,17 @@ html.light-mode .prob-card.solution {
   border-left: 5px solid #15803d !important;
 }
 html.light-mode .metodo-step {
-  border-left: 4px solid #15803d !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html.light-mode .metodo-num {
+  border: 4px solid #ffffff !important;
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4) !important;
+}
+html.light-mode .metodo-step:hover .metodo-num {
+  transform: scale(1.15);
+  box-shadow: 0 0 50px rgba(34, 197, 94, 0.6) !important;
 }
 html.light-mode .form-card-item {
   border-bottom: 5px solid #15803d !important;
