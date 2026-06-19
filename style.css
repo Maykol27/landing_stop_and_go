@@ -1356,30 +1356,30 @@ html.light-mode .hero-overlay-green {
   background: radial-gradient(ellipse at 75% 50%, rgba(57, 255, 20, 0.08) 0%, transparent 65%) !important;
 }
 html.light-mode .hero-content {
-  background: radial-gradient(circle at 35% 50%, rgba(248, 250, 252, 0.94) 0%, rgba(248, 250, 252, 0.7) 45%, rgba(248, 250, 252, 0.3) 70%, transparent 95%) !important;
-  backdrop-filter: blur(2px) !important;
-  -webkit-backdrop-filter: blur(2px) !important;
-  padding: 30px 40px 30px 20px !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
   border: none !important;
   box-shadow: none !important;
-  border-radius: 24px !important;
+  border-radius: 0 !important;
 }
 html.light-mode .hero h1 {
   color: #111827 !important;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 15px rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff !important;
 }
 html.light-mode .hero h1 em {
   color: #00c853 !important; /* Bright Spotify-like green for high illumination */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 15px rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff !important;
 }
 html.light-mode .hero h1 strong {
   color: #e60000 !important; /* Brighter accent red */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.95), 0 0 15px rgba(255, 255, 255, 0.8) !important;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff !important;
 }
 html.light-mode .hero-sub {
   color: #1e293b !important;
-  font-weight: 500 !important;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.75) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff !important;
 }
 html.light-mode .hero-scroll {
   color: #4b5563 !important;
