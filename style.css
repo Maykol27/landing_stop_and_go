@@ -782,6 +782,15 @@ footer {
   .g2,.g4,.g5,.g6 { grid-column: span 3; }
   .g3 { grid-column: span 6; grid-row: span 1; }
   .g7,.g8 { grid-column: span 3; }
+  html.light-mode .hero-overlay {
+    background: radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.7) 35%,
+      rgba(255, 255, 255, 0.3) 65%,
+      transparent 85%
+    ) !important;
+  }
 }
 @media (max-width: 640px) {
   .nav-links { display: none; }
@@ -1349,11 +1358,12 @@ html.light-mode .nav-links a:hover {
 /* Hero Light Mode Enhancements (Localized left-side backing and high-contrast text shadows) */
 html.light-mode .hero-overlay {
   display: block !important; /* Enable subtle white backing for text */
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.25) 35%,
-    transparent 70%
+  background: radial-gradient(
+    circle at 35% 50%,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.7) 30%,
+    rgba(255, 255, 255, 0.3) 60%,
+    transparent 80%
   ) !important;
 }
 html.light-mode .hero-overlay-green {
