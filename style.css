@@ -1348,10 +1348,16 @@ html.light-mode .nav-links a:hover {
 
 /* Hero Light Mode Enhancements (Localized left-side backing and high-contrast text shadows) */
 html.light-mode .hero-overlay {
-  display: none !important; /* Remove the white background overlay completely */
+  display: block !important; /* Enable subtle white backing for text */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.25) 35%,
+    transparent 70%
+  ) !important;
 }
 html.light-mode .hero-overlay-green {
-  background: radial-gradient(ellipse at 75% 50%, rgba(255, 255, 255, 0.45) 0%, transparent 65%) !important;
+  background: radial-gradient(ellipse at 75% 50%, rgba(57, 255, 20, 0.08) 0%, transparent 65%) !important;
 }
 html.light-mode .hero-content {
   background: transparent !important;
@@ -1465,8 +1471,8 @@ html.light-mode .sikai-dashboard:hover {
 }
 html.light-mode .hero-stats {
   background: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.8) !important;
-  box-shadow: 0 15px 45px rgba(255, 255, 255, 0.6), 0 5px 15px rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08) !important;
 }
 html.light-mode .hero-stat {
   border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
