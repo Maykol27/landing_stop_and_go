@@ -1370,20 +1370,20 @@ html.light-mode .hero-content {
 }
 html.light-mode .hero h1 {
   color: #111827 !important;
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff !important;
+  text-shadow: none !important;
 }
 html.light-mode .hero h1 em {
   color: #00c853 !important; /* Bright Spotify-like green for high illumination */
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff !important;
+  text-shadow: none !important;
 }
 html.light-mode .hero h1 strong {
   color: #e60000 !important; /* Brighter accent red */
-  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff !important;
+  text-shadow: none !important;
 }
 html.light-mode .hero-sub {
   color: #1e293b !important;
   font-weight: 600 !important;
-  text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff !important;
+  text-shadow: none !important;
 }
 html.light-mode .hero-scroll {
   color: #4b5563 !important;
