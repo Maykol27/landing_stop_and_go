@@ -782,15 +782,7 @@ footer {
   .g2,.g4,.g5,.g6 { grid-column: span 3; }
   .g3 { grid-column: span 6; grid-row: span 1; }
   .g7,.g8 { grid-column: span 3; }
-  html.light-mode .hero-overlay {
-    background: radial-gradient(
-      circle at 50% 40%,
-      rgba(255, 255, 255, 0.92) 0%,
-      rgba(255, 255, 255, 0.7) 35%,
-      rgba(255, 255, 255, 0.3) 65%,
-      transparent 85%
-    ) !important;
-  }
+
 }
 @media (max-width: 640px) {
   .nav-links { display: none; }
@@ -1355,6 +1347,85 @@ html.light-mode header {
   --white: #ffffff;
   --bg-card: rgba(255,255,255,0.03);
   --bg-card-hover: rgba(255,255,255,0.06);
+}
+
+/* Ensure Hero elements always maintain their dark mode styling and colors in Light Mode */
+html.light-mode .hero {
+  --primary: #39FF14 !important;
+  --primary-dark: #28cc0a !important;
+  --primary-glow: rgba(57, 255, 20, 0.35) !important;
+  --border: rgba(255, 255, 255, 0.07) !important;
+  --text: #f0f0f0 !important;
+  --text-muted: #888 !important;
+  --white: #ffffff !important;
+  --bg-card: rgba(255,255,255,0.03) !important;
+  --bg-card-hover: rgba(255,255,255,0.06) !important;
+}
+
+html.light-mode .hero h1 {
+  color: #ffffff !important;
+}
+
+html.light-mode .hero h1 em {
+  color: #39FF14 !important;
+  text-shadow: 0 0 40px rgba(57, 255, 20, 0.35) !important;
+}
+
+html.light-mode .hero h1 strong {
+  color: #E60000 !important;
+  text-shadow: 0 0 30px rgba(230, 0, 0, 0.35) !important;
+}
+
+html.light-mode .hero .hero-sub {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html.light-mode .hero .hero-stats {
+  background: rgba(7, 7, 9, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+html.light-mode .hero .hero-stat {
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+
+html.light-mode .hero .hero-stat h3 {
+  color: #39FF14 !important;
+  text-shadow: 0 0 20px rgba(57, 255, 20, 0.35) !important;
+}
+
+html.light-mode .hero .hero-stat p {
+  color: #888888 !important;
+}
+
+html.light-mode .hero .hero-scroll {
+  color: #888888 !important;
+}
+
+html.light-mode .hero .btn-green {
+  background: #39FF14 !important;
+  color: #000000 !important;
+  box-shadow: 0 0 25px rgba(57, 255, 20, 0.35), 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+html.light-mode .hero .btn-green:hover {
+  background: #28cc0a !important;
+  color: #000000 !important;
+  box-shadow: 0 0 40px rgba(57, 255, 20, 0.35), 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+html.light-mode .hero .btn-ghost {
+  background: transparent !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: inset 0 0 0 0 rgba(57, 255, 20, 0.35) !important;
+}
+
+html.light-mode .hero .btn-ghost:hover {
+  border-color: #39FF14 !important;
+  color: #000000 !important;
+  background: #39FF14 !important;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.35) !important;
 }
 
 /* Hardcoded white text elements reset to charcoal black */
