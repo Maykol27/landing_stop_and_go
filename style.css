@@ -1344,36 +1344,17 @@ html.light-mode ::-webkit-scrollbar-track {
   background: var(--bg);
 }
 
-/* Navbar Scrolled light styles */
-html.light-mode header.scrolled {
-  background: rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 1px 0 var(--border), 0 4px 30px rgba(0,0,0,0.04) !important;
-}
-html.light-mode header.scrolled .nav-logo {
-  background: #000000 !important;
-  padding: 6px 14px !important;
-  border-radius: 12px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-}
-html.light-mode header.scrolled .nav-logo img {
-  height: 48px !important;
-}
-html.light-mode header.scrolled .nav-links a {
-  color: #4b5563 !important;
-}
-html.light-mode header.scrolled .nav-links a:hover {
-  color: #15803d !important;
-  text-shadow: none !important;
-}
-html.light-mode header.scrolled .nav-links a.nav-cta {
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25) !important;
-}
-html.light-mode header.scrolled .nav-links a.nav-cta:hover {
-  background: var(--primary-dark) !important;
-  color: #ffffff !important;
-  box-shadow: 0 6px 18px rgba(21, 128, 61, 0.35) !important;
+/* Navbar Scrolled light styles - Overridden to keep dark theme */
+html.light-mode header {
+  --primary: #39FF14;
+  --primary-dark: #28cc0a;
+  --primary-glow: rgba(57, 255, 20, 0.35);
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #f0f0f0;
+  --text-muted: #888;
+  --white: #ffffff;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.06);
 }
 
 /* Hardcoded white text elements reset to charcoal black */
@@ -1746,21 +1727,13 @@ html.light-mode .footer-bottom p {
   width: 40px;
   height: 40px;
 }
-html.light-mode #theme-toggle {
-  background: rgba(0, 0, 0, 0.03) !important;
-  color: #111827 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
+
 #theme-toggle:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: var(--primary);
   box-shadow: 0 0 15px var(--primary-glow);
 }
-html.light-mode #theme-toggle:hover {
-  background: rgba(0, 0, 0, 0.06) !important;
-  border-color: #15803d !important;
-  box-shadow: 0 0 15px rgba(21, 128, 61, 0.15) !important;
-}
+
 
 /* Interactive Bogotá SVG Map Overrides for Light Mode */
 html.light-mode .map-bogota-wrap {
