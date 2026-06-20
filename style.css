@@ -1349,74 +1349,31 @@ html.light-mode header.scrolled {
   background: rgba(255, 255, 255, 0.85) !important;
   box-shadow: 0 1px 0 var(--border), 0 4px 30px rgba(0,0,0,0.04) !important;
 }
-html.light-mode .nav-logo {
+html.light-mode header.scrolled .nav-logo {
   background: #000000 !important;
   padding: 6px 14px !important;
   border-radius: 12px !important;
   display: inline-flex !important;
   align-items: center !important;
 }
-html.light-mode .nav-logo img {
+html.light-mode header.scrolled .nav-logo img {
   height: 48px !important;
 }
-html.light-mode .nav-links a {
+html.light-mode header.scrolled .nav-links a {
   color: #4b5563 !important;
 }
-html.light-mode .nav-links a:hover {
+html.light-mode header.scrolled .nav-links a:hover {
   color: #15803d !important;
   text-shadow: none !important;
 }
-html.light-mode .nav-links a.nav-cta {
+html.light-mode header.scrolled .nav-links a.nav-cta {
   color: #ffffff !important;
   box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25) !important;
 }
-html.light-mode .nav-links a.nav-cta:hover {
+html.light-mode header.scrolled .nav-links a.nav-cta:hover {
   background: var(--primary-dark) !important;
   color: #ffffff !important;
   box-shadow: 0 6px 18px rgba(21, 128, 61, 0.35) !important;
-}
-
-/* Hero Light Mode Enhancements (Localized left-side backing and high-contrast text shadows) */
-html.light-mode .hero-overlay {
-  display: block !important; /* Enable subtle white backing for text */
-  background: radial-gradient(
-    circle at 25% 50%,
-    rgba(255, 255, 255, 0.75) 0%,
-    rgba(255, 255, 255, 0.4) 30%,
-    transparent 65%
-  ) !important;
-}
-html.light-mode .hero-overlay-green {
-  background: radial-gradient(ellipse at 75% 50%, rgba(57, 255, 20, 0.08) 0%, transparent 65%) !important;
-}
-html.light-mode .hero-content {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
-html.light-mode .hero h1 {
-  color: #111827 !important;
-  text-shadow: none !important;
-}
-html.light-mode .hero h1 em {
-  color: #00c853 !important; /* Bright Spotify-like green for high illumination */
-  text-shadow: none !important;
-}
-html.light-mode .hero h1 strong {
-  color: #e60000 !important; /* Brighter accent red */
-  text-shadow: none !important;
-}
-html.light-mode .hero-sub {
-  color: #1e293b !important;
-  font-weight: 600 !important;
-  text-shadow: none !important;
-}
-html.light-mode .hero-scroll {
-  color: #4b5563 !important;
 }
 
 /* Hardcoded white text elements reset to charcoal black */
@@ -1424,7 +1381,6 @@ html.light-mode h1,
 html.light-mode h2,
 html.light-mode h3,
 html.light-mode h4,
-html.light-mode .hero h1,
 html.light-mode .section-title,
 html.light-mode .biz-card h3,
 html.light-mode .brand-info-side h3,
@@ -1437,7 +1393,6 @@ html.light-mode .footer-col h4 {
 }
 
 /* Green accents & glows overrides */
-html.light-mode .hero h1 em,
 html.light-mode .section-title em,
 html.light-mode .section-label,
 html.light-mode .metodo-step h4,
@@ -1455,7 +1410,6 @@ html.light-mode .prob-card p {
 }
 
 /* Red accents & glows overrides */
-html.light-mode .hero h1 strong,
 html.light-mode .text-accent,
 html.light-mode .prob-card.problem h3,
 html.light-mode .biz-card.eds h3,
@@ -1507,23 +1461,6 @@ html.light-mode .sikai-dashboard:hover {
   background: #ffffff !important;
   border-color: var(--border-green) !important;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12), 0 0 25px rgba(21, 128, 61, 0.12) !important;
-}
-html.light-mode .hero-stats {
-  background: rgba(255, 255, 255, 0.45) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
-}
-html.light-mode .hero-stat {
-  border-right: 1px solid rgba(0, 0, 0, 0.08) !important;
-}
-html.light-mode .hero-stat h3 {
-  color: #15803d !important;
-  text-shadow: none !important;
-}
-html.light-mode .hero-stat p {
-  color: #4b5563 !important;
 }
 
 /* Form submission style override */
