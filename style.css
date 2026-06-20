@@ -1356,6 +1356,15 @@ html.light-mode .nav-links a:hover {
   color: #15803d !important;
   text-shadow: none !important;
 }
+html.light-mode .nav-cta {
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25) !important;
+}
+html.light-mode .nav-cta:hover {
+  background: var(--primary-dark) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(21, 128, 61, 0.35) !important;
+}
 
 /* Hero Light Mode Enhancements (Localized left-side backing and high-contrast text shadows) */
 html.light-mode .hero-overlay {
