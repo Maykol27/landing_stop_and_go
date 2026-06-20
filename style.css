@@ -714,8 +714,8 @@ header.scrolled {
 }
 
 .ticker-logo-wrap {
-  width: 110px;
-  height: 70px;
+  width: 140px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -728,11 +728,19 @@ header.scrolled {
   object-fit: contain;
   /* Apply light shadow/glow behind dark logos in dark mode */
   filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
-  transition: filter 0.3s;
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.ticker-logo[alt="CGBI"] {
+  transform: scale(1.4);
 }
 
 .allies-ticker-item:hover .ticker-logo {
   filter: drop-shadow(0 0 15px rgba(57, 255, 20, 0.7));
+}
+
+.allies-ticker-item:hover .ticker-logo[alt="CGBI"] {
+  transform: scale(1.45);
 }
 
 .ticker-text {
