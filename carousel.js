@@ -5,14 +5,14 @@
   const AUTOPLAY_MS = 4000;
 
   const images = [
-    { src: '/assets/sobrenosotros.jpeg',                               cap: 'Módulo Café Gourmet — Vista Exterior' },
-    { src: '/assets/1WhatsApp Image 2026-06-11 at 6.03.51 PM.jpeg',    cap: 'Módulo Standard — Vista Frontal' },
-    { src: '/assets/WhatsApp Image 2026-06-11 at 8.27.36 PM.jpeg',     cap: 'Módulo Premium — Vista Nocturna' },
-    { src: '/assets/21WhatsApp Image 2026-06-11 at 10.52.11 PM.jpeg',  cap: 'Módulo Compact — Vista Lateral' },
-    { src: '/assets/express.jpeg',                                     cap: 'Módulo Express — Detalle Arquitectónico' },
-    { src: '/assets/4WhatsApp Image 2026-06-11 at 10.52.11 PM.jpeg',   cap: 'Módulo Mobility — Perspectiva' },
-    { src: '/assets/1WhatsApp Image 2026-06-11 at 6.02.25 PM.jpeg',    cap: 'Hub Comercial — Ambiente' },
-    { src: '/assets/WhatsApp Image 2026-06-11 at 5.58.38 PM.jpeg',     cap: 'Módulo Food — Vista Interior' },
+    { src: './assets/sobrenosotros.jpeg',                               cap: 'Módulo Café Gourmet — Vista Exterior' },
+    { src: './assets/1WhatsApp Image 2026-06-11 at 6.03.51 PM.jpeg',    cap: 'Módulo Standard — Vista Frontal' },
+    { src: './assets/WhatsApp Image 2026-06-11 at 8.27.36 PM.jpeg',     cap: 'Módulo Premium — Vista Nocturna' },
+    { src: './assets/21WhatsApp Image 2026-06-11 at 10.52.11 PM.jpeg',  cap: 'Módulo Compact — Vista Lateral' },
+    { src: './assets/express.jpeg',                                     cap: 'Módulo Express — Detalle Arquitectónico' },
+    { src: './assets/4WhatsApp Image 2026-06-11 at 10.52.11 PM.jpeg',   cap: 'Módulo Mobility — Perspectiva' },
+    { src: './assets/1WhatsApp Image 2026-06-11 at 6.02.25 PM.jpeg',    cap: 'Hub Comercial — Ambiente' },
+    { src: './assets/WhatsApp Image 2026-06-11 at 5.58.38 PM.jpeg',     cap: 'Módulo Food — Vista Interior' },
   ];
 
   let current = 0;
