@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "stopandgo-346ca",
+    "stopandgo": "stopandgo-346ca"
+  },
+  "targets": {
+    "stopandgo-346ca": {
+      "hosting": {
+        "site": [
+          "stopandgo",
+          "stopandgo-346ca"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
