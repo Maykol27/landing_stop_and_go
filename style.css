@@ -28,7 +28,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
 
 body {
   font-family: var(--font);
@@ -968,6 +968,7 @@ footer {
 /* --- Mobile (≤768px) --- */
 @media (max-width: 768px) {
   .hamburger { display: flex; }
+  .nav-logo img { height: 60px; max-width: 70vw; }
   
   .nav-links {
     position: fixed;
@@ -1014,7 +1015,7 @@ footer {
   }
 
   /* Hero mobile adjustments */
-  .hero { min-height: 100vh; min-height: 100dvh; padding: 80px 0 30px; }
+  .hero { min-height: 100vh; min-height: 100dvh; padding:  140px 0 30px; }
   .hero-wrapper { padding: 0 16px; flex-direction: column; align-items: center; }
   .hero-content { max-width: 100%; }
   .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
