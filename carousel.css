@@ -16,7 +16,7 @@
 /* ---------- TRACK & SLIDES ---------- */
 .sg-carousel-track {
   display: flex;
-  height: 520px;
+  height:  75vh; min-height: 520px; max-height: 850px;
   transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: transform;
 }
@@ -253,7 +253,7 @@
 }
 
 @media (max-width: 768px) {
-  .sg-carousel-track { height: 280px; }
+  .sg-carousel-track { height:  55vh; min-height: 350px; }
   .sg-slide-info p { font-size: 1rem; }
   .sg-thumb { width: 80px; height: 52px; }
   .sg-arrow { width: 40px; height: 40px; }
