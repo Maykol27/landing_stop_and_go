@@ -130,7 +130,7 @@ header.scrolled {
 }
 .hero-badge span { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; display: block; animation: blink 1.5s infinite; }
 .hero h1 {
-  font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 900;
+  font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 900;
   text-transform: uppercase; margin-bottom: 16px; color: #fff;
 }
 .hero h1 em { font-style: normal; color: var(--primary); text-shadow: 0 0 40px var(--primary-glow); }
