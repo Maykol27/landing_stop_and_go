@@ -159,7 +159,7 @@
 
     // Translate track
     track.style.transition = animate ? 'transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1)' : 'none';
-    track.style.transform = `translateX(-${index * 100}%)`;
+    track.style.transform = `translateX(-${index * (100 / images.length)}%)`;
 
     // Update dots
     document.querySelectorAll('.sg-dot').forEach((d, i) => d.classList.toggle('active', i === index));

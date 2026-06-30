@@ -87,9 +87,9 @@ header.scrolled {
 /* ========== HERO ========== */
 .hero {
   position: relative; height: 100vh; min-height: 640px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-end; justify-content: center;
   text-align: center; overflow: hidden;
-  padding: 100px 0 40px;
+  padding: 100px 0  8vh;
 }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
