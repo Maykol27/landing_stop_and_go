@@ -67,7 +67,7 @@ header.scrolled {
   display: flex; align-items: center; justify-content: space-between;
   width: 92%; max-width: 1280px; margin: 0 auto;
 }
-.nav-logo img { height: 72px; object-fit: contain; }
+.nav-logo img { height: 96px; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 36px; }
 .nav-links a {
   font-family: var(--heading); font-weight: 700; font-size: 0.82rem;
@@ -819,7 +819,7 @@ footer {
 }
 .footer-wrap { width: 92%; max-width: 1280px; margin: 0 auto; }
 .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 52px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
-.footer-brand img { height: 50px; margin-bottom: 24px; }
+.footer-brand img { height: 96px; margin-bottom: 24px; }
 .footer-brand p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; max-width: 320px; }
 .footer-col h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px; font-weight: 700; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -972,7 +972,8 @@ footer {
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
+    transform: translateX(100%);
     width: 80%;
     max-width: 320px;
     height: 100vh;
@@ -991,7 +992,7 @@ footer {
     z-index: 1000;
   }
   .nav-links.open {
-    right: 0;
+    transform: translateX(0);
   }
   .nav-links a {
     font-size: 1rem !important;
@@ -1114,7 +1115,7 @@ footer {
   .ticker-text p { font-size: 0.7rem; }
   .contact-form { padding: 18px; }
   .form-field { padding: 12px 16px; font-size: 0.9rem; }
-  .nav-logo img { height: 52px; }
+  .nav-logo img { height: 64px; }
   .prob-card .bg-label { font-size: 2.5rem; top: 16px; right: 16px; }
   .wrap { width: 88%; padding: 48px 0; }
   .portfolio-card { height: 240px; }
@@ -1133,7 +1134,7 @@ footer {
   .hero h1 { font-size: 1.5rem; }
   .hero-stat h3 { font-size: 1.2rem; }
   .hero-stat p { font-size: 0.6rem; }
-  .nav-logo img { height: 44px; }
+  .nav-logo img { height: 52px; }
   .allies-ticker-item { width: 250px; }
   .roi-number { font-size: 1.7rem; }
   .section-title { font-size: 1.4rem; }
