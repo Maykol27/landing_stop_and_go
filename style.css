@@ -2482,3 +2482,6 @@ html:not(.light-mode) .section-green {
 html:not(.light-mode) .section-red {
   background: linear-gradient(135deg, rgba(230, 0, 0, 0.14) 0%, #070709 50%, rgba(230, 0, 0, 0.05) 100%) !important;
 }
+
+/* Emphasize CABSAS logo in ticker */
+.ticker-logo[alt="CABSAS"] { transform: scale(1.4); opacity: 1; filter: brightness(1.2); }
