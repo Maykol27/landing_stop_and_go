@@ -970,7 +970,7 @@ footer {
   .hamburger { display: flex; }
   .nav-logo img { height: 48px; max-width: 40vw; }
   .nav-cabsas span { display: none; }
-  .cabsas-nav-img { height: 20px !important; }
+  .cabsas-nav-img { height: 32px !important; }
   .nav-cabsas { padding-right: 8px !important; border-right: none !important; }
   
   .nav-links {
