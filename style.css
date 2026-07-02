@@ -130,8 +130,8 @@ header.scrolled {
 }
 .hero-badge span { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; display: block; animation: blink 1.5s infinite; }
 .hero h1 {
-  font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 900;
-  text-transform: uppercase; margin-bottom: 16px; color: #fff;
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem); font-weight: 900; line-height: 1.1;
+  text-transform: uppercase; margin-bottom: 12px; color: #fff;
 }
 .hero h1 em { font-style: normal; color: var(--primary); text-shadow: 0 0 40px var(--primary-glow); }
 .hero h1 strong { font-style: normal; color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
@@ -1021,7 +1021,7 @@ footer {
   .hero { min-height: 100vh; min-height: 100dvh; padding:   160px 0 40px; height: auto ; }
   .hero-wrapper { padding: 0 16px; flex-direction: column; align-items: center; }
   .hero-content { max-width: 100%; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero h1 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
   .hero-sub { font-size: 0.95rem; }
   .hero-ctas { flex-direction: column; width: 100%; }
   .hero-ctas .btn { width: 100%; justify-content: center; text-align: center; }
