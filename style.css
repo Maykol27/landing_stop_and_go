@@ -133,7 +133,7 @@ header.scrolled {
 /* ========== HERO BRANDS TICKER ========== */
 .hero-brands-ticker {
   position: absolute;
-  bottom: 15px;
+  bottom: 5px;
   left: 0;
   width: 100%;
   z-index: 10;
@@ -146,8 +146,8 @@ header.scrolled {
 .hero-brands-track {
   display: flex;
   align-items: center;
-  gap: 80px;
-  padding-left: 80px;
+  gap: 90px;
+  padding-left: 90px;
   animation: hero-brands-scroll 60s linear infinite;
   min-width: max-content;
 }
@@ -156,7 +156,7 @@ header.scrolled {
   100% { transform: translateX(-50%); }
 }
 .hero-brands-track img {
-  height: 60px; /* Made logos much bigger */
+  height: 80px; /* Maximize logo size in the available space */
   object-fit: contain;
   flex-shrink: 0;
 }
