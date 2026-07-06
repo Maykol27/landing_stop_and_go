@@ -112,11 +112,7 @@ header.scrolled {
   background: radial-gradient(ellipse at 75% 50%, rgba(57,255,20,0.06) 0%, transparent 60%);
   animation: glow-pulse 8s ease-in-out infinite alternate;
 }
-.hero-wrapper {
-  position: relative; z-index: 3; width: 92%; max-width: 1280px; margin: 0 auto;
-  display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 40px;
-  padding: 0;
-}
+/* Removed old hero-wrapper */
 .hero-content {
   position: relative; z-index: 3; max-width: 850px;
   display: flex; flex-direction: column; align-items: center;
@@ -131,26 +127,28 @@ header.scrolled {
 .hero-badge span { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; display: block; animation: blink 1.5s infinite; }
 
 /* ========== HERO BRANDS TICKER ========== */
+.hero-brands-ticker-container {
+  width: 100%; max-width: 650px;
+  position: relative;
+}
 .hero-brands-ticker {
   position: relative;
   width: 100%;
-  max-width: 650px;
   z-index: 10;
-  margin-bottom: -15px; /* Pull it slightly down if needed */
 }
 .hero-brands-track-container {
   overflow: hidden;
   width: 100%;
   display: flex;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 .hero-brands-track {
   display: flex;
   align-items: center;
-  gap: 80px;
-  padding-left: 80px;
-  animation: hero-brands-scroll 50s linear infinite;
+  gap: 60px;
+  padding-left: 60px;
+  animation: hero-brands-scroll 45s linear infinite;
   min-width: max-content;
 }
 @keyframes hero-brands-scroll {
@@ -158,7 +156,7 @@ header.scrolled {
   100% { transform: translateX(-50%); }
 }
 .hero-brands-track img {
-  height: 100px; /* Even bigger as requested */
+  height: 120px; /* Even BIGGER as requested, since it now occupies the KPI slot */
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -178,19 +176,19 @@ header.scrolled {
   position: relative; z-index: 3;
   display: flex; gap: 0; align-items: stretch;
   border: 1px solid var(--border);
-  border-radius: 16px; /* smaller */
+  border-radius: 12px;
   overflow: hidden;
   backdrop-filter: blur(12px);
   background: rgba(7,7,9,0.6);
-  width: 100%; max-width: 480px; /* smaller */
+  width: 100%; max-width: 480px;
 }
 .hero-stat {
-  flex: 1; padding: 12px 14px; text-align: center; /* smaller */
+  flex: 1; padding: 12px 14px; text-align: center;
   border-right: 1px solid var(--border);
 }
 .hero-stat:last-child { border-right: none; }
-.hero-stat h3 { font-size: 1.4rem; font-weight: 900; color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); line-height: 1; }
-.hero-stat p { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 4px; }
+.hero-stat h3 { font-size: 1.3rem; font-weight: 900; color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); line-height: 1; }
+.hero-stat p { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 4px; }
 .hero-scroll {
   position: absolute; bottom: 24px; right: 40px; z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -1054,12 +1052,6 @@ footer {
   /* Hero mobile adjustments */
   .hero { min-height: 100vh; min-height: 100dvh; padding: 160px 0 90px; height: auto; }
   .hero-wrapper { padding: 0 16px; flex-direction: column; align-items: center; }
-
-  .hero-top-row { flex-direction: column; align-items: center !important; text-align: center; gap: 40px !important; }
-  .hero-title-wrap { text-align: center !important; }
-  .hero-wrapper { flex-direction: column; align-items: center; justify-content: center; }
-  .hero-brands-ticker { max-width: 100%; margin-top: 20px; }
-
 
   .hero-brands-track { gap: 50px; padding-left: 50px; }
   .hero-brands-track img { height: 60px; }
@@ -2532,3 +2524,13 @@ html:not(.light-mode) .section-red {
 
 /* Emphasize CABSAS logo in ticker */
 .ticker-logo[alt="CABSAS"] { transform: scale(1.4); opacity: 1; filter: brightness(1.2); }
+
+@media (max-width: 992px) {
+  .hero-top-row { flex-direction: column; align-items: center !important; text-align: center; gap: 30px !important; }
+  .hero-title-wrap { text-align: center !important; }
+  .hero-bottom-row { flex-direction: column; align-items: center !important; text-align: center; gap: 40px !important; }
+  .hero-content { text-align: center !important; align-items: center !important; }
+  .hero-sub { margin: 0 auto 28px !important; }
+  .hero-ctas { justify-content: center !important; }
+  .hero-brands-track img { height: 80px !important; }
+}
