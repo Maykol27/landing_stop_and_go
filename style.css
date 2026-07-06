@@ -113,9 +113,9 @@ header.scrolled {
   animation: glow-pulse 8s ease-in-out infinite alternate;
 }
 .hero-wrapper {
-  position: relative; z-index: 3; width: 100%; max-width: 1500px;
-  display: flex; align-items: flex-end; justify-content: center; flex-wrap: wrap; gap: 40px;
-  padding: 0 20px;
+  position: relative; z-index: 3; width: 92%; max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+  padding: 0;
 }
 .hero-content {
   position: relative; z-index: 3; max-width: 850px;
@@ -132,23 +132,25 @@ header.scrolled {
 
 /* ========== HERO BRANDS TICKER ========== */
 .hero-brands-ticker {
-  position: absolute;
-  bottom: 5px;
-  left: 0;
+  position: relative;
   width: 100%;
+  max-width: 650px;
   z-index: 10;
+  margin-bottom: -15px; /* Pull it slightly down if needed */
 }
 .hero-brands-track-container {
   overflow: hidden;
   width: 100%;
   display: flex;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 .hero-brands-track {
   display: flex;
   align-items: center;
-  gap: 90px;
-  padding-left: 90px;
-  animation: hero-brands-scroll 60s linear infinite;
+  gap: 80px;
+  padding-left: 80px;
+  animation: hero-brands-scroll 50s linear infinite;
   min-width: max-content;
 }
 @keyframes hero-brands-scroll {
@@ -156,7 +158,7 @@ header.scrolled {
   100% { transform: translateX(-50%); }
 }
 .hero-brands-track img {
-  height: 80px; /* Maximize logo size in the available space */
+  height: 100px; /* Even bigger as requested */
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -176,19 +178,19 @@ header.scrolled {
   position: relative; z-index: 3;
   display: flex; gap: 0; align-items: stretch;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px; /* smaller */
   overflow: hidden;
   backdrop-filter: blur(12px);
   background: rgba(7,7,9,0.6);
-  width: 100%; max-width: 620px;
+  width: 100%; max-width: 480px; /* smaller */
 }
 .hero-stat {
-  flex: 1; padding: 16px 20px; text-align: center;
+  flex: 1; padding: 12px 14px; text-align: center; /* smaller */
   border-right: 1px solid var(--border);
 }
 .hero-stat:last-child { border-right: none; }
-.hero-stat h3 { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); line-height: 1; }
-.hero-stat p { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 5px; }
+.hero-stat h3 { font-size: 1.4rem; font-weight: 900; color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); line-height: 1; }
+.hero-stat p { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); margin-top: 4px; }
 .hero-scroll {
   position: absolute; bottom: 24px; right: 40px; z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -1052,6 +1054,12 @@ footer {
   /* Hero mobile adjustments */
   .hero { min-height: 100vh; min-height: 100dvh; padding: 160px 0 90px; height: auto; }
   .hero-wrapper { padding: 0 16px; flex-direction: column; align-items: center; }
+
+  .hero-top-row { flex-direction: column; align-items: center !important; text-align: center; gap: 40px !important; }
+  .hero-title-wrap { text-align: center !important; }
+  .hero-wrapper { flex-direction: column; align-items: center; justify-content: center; }
+  .hero-brands-ticker { max-width: 100%; margin-top: 20px; }
+
 
   .hero-brands-track { gap: 50px; padding-left: 50px; }
   .hero-brands-track img { height: 60px; }
