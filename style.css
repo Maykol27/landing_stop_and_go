@@ -156,7 +156,7 @@ header.scrolled {
   100% { transform: translateX(-50%); }
 }
 .hero-brands-track img {
-  height: 120px; /* Even BIGGER as requested, since it now occupies the KPI slot */
+  height: 180px; /* Even BIGGER as requested, since it now occupies the KPI slot */
   object-fit: contain;
   flex-shrink: 0;
 }
